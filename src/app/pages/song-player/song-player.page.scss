@@ -1,0 +1,32 @@
+ion-content {
+    --background: linear-gradient(to bottom, #537169 0%, #537169 30%, #ffffff 100%);
+}
+
+.pad-10 {
+    padding-left: 10%;
+}
+
+.Arrowback {
+    width: 40px;
+    height:40px;
+}
+
+.center {
+    text-align: center;
+}
+
+.SongImage {
+    width: 80%;
+    height: auto;
+    border-radius: 10px;    
+}
+
+.SongImageconteiner {
+    width: 100%;
+}
+
+ion-header {
+    ion-toolbar {
+        --background: transparent;
+    }
+}

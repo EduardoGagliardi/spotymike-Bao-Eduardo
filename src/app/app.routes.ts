@@ -29,4 +29,8 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'auth/login',
   },
+  {
+    path: 'song-player',
+    loadComponent: () => import('./pages/song-player/song-player.page').then( m => m.SongPlayerPage)
+  },
 ];

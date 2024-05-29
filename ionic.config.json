@@ -1,0 +1,7 @@
+{
+  "name": "Spotymike",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

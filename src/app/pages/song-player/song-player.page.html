@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
         <img src="assets/icon/Arrow-back.png" alt="Back arrow" class="Arrowback">
@@ -11,10 +11,11 @@
   <div id="songplayer" class="center SongImageconteiner">
     <img class="SongImage" src="assets/music/thisIsElonMusk.png">
   </div>
-  <div id="">
-    <div id="info" class="pad-10">
-      <h1 style="font-weight: bold;">Elon Musk</h1>
-      <p>this is elon musk</p>
-    </div>
+  <div id="info" class="pad-10">
+    <h1 style="font-weight: bold;">Elon Musk</h1>
+    <p>this is elon musk</p>
+  </div>
+  <div id="control" class="controls, center">
+    <ion-range min="0" max="100" value="40" class="slidebar" mode=""></ion-range>
   </div>
 </ion-content>

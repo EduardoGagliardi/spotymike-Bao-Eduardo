@@ -2,6 +2,15 @@ ion-content {
     --background: linear-gradient(to bottom, #537169 0%, #537169 30%, #ffffff 100%);
 }
 
+ion-range {
+    padding-left: 10%;
+    padding-right: 10%;
+    --bar-background: transparent;
+    --bar-background-active: #15AB90;
+    --bar-height: 3px;
+    --bar-knob-size: 50px;
+  }
+
 .pad-10 {
     padding-left: 10%;
 }

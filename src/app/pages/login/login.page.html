@@ -33,6 +33,8 @@
     }
   </ion-list>
   <br>
+  <a (click)="onPasswordLostModal()" style="float: left; padding-left: 5%;">Mot de passe oublie</a>
+  <br>
   @if(error){
   <p class="error"><ion-icon name="alert-outline"></ion-icon>{{ error }}</p>
   }

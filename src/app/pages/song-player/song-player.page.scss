@@ -1,5 +1,5 @@
 ion-content {
-    --background: linear-gradient(to bottom, #537169 0%, #537169 30%, #ffffff 100%);
+    --background: linear-gradient(to bottom, #537169 0%, #537169 30%, #ffffff 50%);
 }
 
 ion-range {
@@ -9,7 +9,12 @@ ion-range {
     --bar-background-active: #15AB90;
     --bar-height: 3px;
     --bar-knob-size: 50px;
-  }
+}
+
+.icon {
+    height: 40px;
+    width: 40px;
+}
 
 .pad-10 {
     padding-left: 10%;

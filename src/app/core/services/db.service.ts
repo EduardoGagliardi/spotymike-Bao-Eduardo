@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { collection, getDocs, getFirestore, Firestore, DocumentData  } from 'firebase/firestore/lite';
 import { db } from 'src/environments/environment';
+import { IUser } from '../interfaces/userTest';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
 
-  static async getUsers(): Promise<DocumentData[]> {
+  async getUsers() {
     const userCollection = collection(db, "Users");
     const userSnapshot = await getDocs(userCollection);
-    const userList = userSnapshot.docs.map(doc => doc.data());
-    return userList;
+    const userList = await userSnapshot.docs.map(doc => doc.data());
+    console.log(userList)
+    return userList  as IUser[];
   }
 
   constructor() {

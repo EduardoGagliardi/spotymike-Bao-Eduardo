@@ -13,6 +13,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { i18nProviders } from './app/core/providers/i18n.providers';
 import { IonicModule } from '@ionic/angular';
 import { DbService } from './app/core/services/db.service';
+import { Media } from '@ionic-native/media/ngx';
 
 if (environment.production) {
   enableProdMode();
@@ -22,6 +23,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     i18nProviders,
     DbService,
+    Media,
     provideHttpClient(),
     provideIonicAngular(),
     importProvidersFrom(IonicModule.forRoot()),

@@ -24,6 +24,8 @@ import { LoginRequestError } from 'src/app/core/interfaces/login';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/password-lost.component';
+import { DbService } from 'src/app/core/services/db.service';
+import { DocumentData } from 'firebase/firestore/lite';
 
 @Component({
   selector: 'app-login',
@@ -49,7 +51,7 @@ import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/passwo
 export class LoginPage implements OnInit {
   error = '';
   submitForm = false;
-
+  public userList = DbService.getUsers().then((users) => users.map(({ Email, FirstName, LastName, Password, dateBirth, sexe, tel }) => ({ email: Email, firstName: FirstName, lastName: LastName, password: Password, dateBirth: dateBirth.seconds, sexe: sexe, tel })));
   private router = inject(Router);
   private modalCtl = inject(ModalController);
   private serviceAuth = inject(AuthentificationService);
@@ -64,9 +66,12 @@ export class LoginPage implements OnInit {
       Validators.minLength(8),
     ]),
   });
-  constructor() {}
+  constructor() {
+   }
 
-  ngOnInit() {}
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
+  ngOnInit() {
+  }
 
   onSubmit() {
     this.error = '';

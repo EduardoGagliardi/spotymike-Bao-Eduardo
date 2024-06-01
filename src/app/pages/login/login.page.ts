@@ -20,7 +20,7 @@ import {
 } from '@ionic/angular/standalone';
 import { AuthentificationService } from 'src/app/core/services/authentification.service';
 import { TranslateModule } from '@ngx-translate/core';
-import { LoginRequestError } from 'src/app/core/interfaces/login';
+import { LoginRequestError, LoginRequestSucess } from 'src/app/core/interfaces/login';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/password-lost.component';
@@ -70,6 +70,7 @@ export class LoginPage implements OnInit {
 
   onSubmit() {
     this.error = '';
+    console.log(this.form);
     if (this.form.valid) {
       this.submitForm = true;
       this.serviceAuth

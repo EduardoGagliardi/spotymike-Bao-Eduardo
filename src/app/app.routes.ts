@@ -21,13 +21,26 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadComponent: () =>
-      import('./shared/tabs/tabs.page').then((m) => m.TabsPage),
+    loadChildren: () =>
+      import('./layouts/tabs/tabs.routes').then((m) => m.routes),
+    // children: [
+    //   {
+    //     path: 'home',
+    //     loadComponent: () =>
+    //       import('./pages/home/home.page').then((m) => m.HomePage),
+    //   },
+    //   {
+    //     path: 'like',
+    //     loadComponent: () =>
+    //       import('./pages/tab2/tab2.page').then((m) => m.Tab2Page),
+    //   },
+    // ],
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'auth/login',
+    // redirectTo: 'auth/login',
+    redirectTo: 'home',
   },
   {
     path: 'song-player',

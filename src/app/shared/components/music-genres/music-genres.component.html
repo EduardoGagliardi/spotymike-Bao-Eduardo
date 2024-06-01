@@ -1,0 +1,47 @@
+<ion-grid>
+  <ion-row class="categories">
+    <ion-row class="genre-title">
+      <ion-col>Music Genres</ion-col>
+      <ion-col class="see-all">
+        <a href="">See all</a></ion-col>
+    </ion-row>
+    <ion-row class="genre-buttons">
+      <ion-button
+        shape="round"
+        class="genre-button"
+        fill="solid"
+        [class.selected]="selectedGenre === 'All'"
+        (click)="selectGenre('All')"
+      >
+        All
+      </ion-button>
+      <ion-button
+        shape="round"
+        class="genre-button"
+        fill="outline"
+        [class.selected]="selectedGenre === 'Pop'"
+        (click)="selectGenre('Pop')"
+      >
+        Pop
+      </ion-button>
+      <ion-button
+        shape="round"
+        class="genre-button"
+        fill="outline"
+        [class.selected]="selectedGenre === 'Rock'"
+        (click)="selectGenre('Rock')"
+      >
+        Rock
+      </ion-button>
+      <ion-button
+        shape="round"
+        class="genre-button"
+        fill="outline"
+        [class.selected]="selectedGenre === 'Jazz'"
+        (click)="selectGenre('Jazz')"
+      >
+        Jazz
+      </ion-button>
+    </ion-row>
+  </ion-row>
+</ion-grid>

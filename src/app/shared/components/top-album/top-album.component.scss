@@ -1,0 +1,39 @@
+.new-album {
+    background: #15AB90;
+    color: white;
+    padding: 5%;
+    border-radius: 20px;
+    height: 23vh; /* Chiều cao bằng 1/4 màn hình */
+    width: 90%;
+    margin: 5% auto; /* Căn giữa theo chiều ngang với khoảng cách trên dưới */
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: space-between; /* Căn lề hai bên */
+    
+    h2 {
+      font-size: 24px; 
+    }
+    
+    p {
+      font-size: 16px; 
+    }
+    
+    #see-new-album {
+      color: white;
+      font-size: 24px;
+    }
+  
+    ion-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+      //align-items: center;
+      height: 100%; 
+    }
+    
+    .album-photo {
+      width: 100%;
+      height: auto;
+    }
+  }
+  

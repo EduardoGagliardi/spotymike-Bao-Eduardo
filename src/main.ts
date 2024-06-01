@@ -12,6 +12,9 @@ import { environment } from './environments/environment';
 import { provideHttpClient } from '@angular/common/http';
 import { i18nProviders } from './app/core/providers/i18n.providers';
 import { IonicModule } from '@ionic/angular';
+import { Firestore } from 'firebase/firestore/lite';
+import { FirestoreService } from './app/core/services/firestore.service';
+import { LocalStorageService } from './app/core/services/local-storage.service';
 
 if (environment.production) {
   enableProdMode();
@@ -19,6 +22,8 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
+    FirestoreService,
+    LocalStorageService,
     i18nProviders,
     provideHttpClient(),
     provideIonicAngular(),

@@ -1,0 +1,12 @@
+ion-tab-button {
+    --color-selected: #15AB90;  
+    ion-icon {
+      color: var(--color);
+    }
+  
+    &.tab-selected {
+      ion-icon {
+        color: var(--color-selected);
+      }
+    }
+}

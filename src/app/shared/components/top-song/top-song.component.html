@@ -1,0 +1,7 @@
+<div class="scrollable-row">
+  <ng-container *ngFor="let song of topSongs">
+    <ion-col >
+      <app-song-card [song]="song"></app-song-card>
+    </ion-col>
+  </ng-container>
+</div>

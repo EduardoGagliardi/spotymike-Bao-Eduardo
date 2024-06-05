@@ -1,0 +1,51 @@
+.artist-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  
+  .artist-number,
+  .artist-details {
+    display: flex;
+    align-items: center;
+  }
+  
+  .artist-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover;
+  }
+  
+  .artist-details {
+    flex: 1;
+    padding-left: 10px;
+    flex-direction: column;
+    align-items: flex-start;  }
+  
+  .artist-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .number-album {
+    color: #666;
+  }
+  
+  .artist-artist {
+    color: #666;
+  }
+  
+  .artist-options {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  ion-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: #15AB90; /* Adjust the icon color */
+  }
+  

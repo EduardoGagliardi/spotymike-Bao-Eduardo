@@ -14,6 +14,7 @@ import { TopAlbumComponent } from "src/app/shared/components/top-album/top-album
 import { MusicGenresComponent } from "src/app/shared/components/music-genres/music-genres.component";
 import { TopSongComponent } from "src/app/shared/components/top-song/top-song.component";
 import { ListSongComponent } from "src/app/shared/components/list-song/list-song.component";
+import { ListArtistComponent } from "src/app/shared/components/list-artist/list-artist.component";
 
 @Component({
   selector: "app-home-home",
@@ -27,7 +28,8 @@ import { ListSongComponent } from "src/app/shared/components/list-song/list-song
     TopAlbumComponent,
     MusicGenresComponent,
     TopSongComponent,
-    ListSongComponent
+    ListSongComponent,
+    ListArtistComponent
   ],
 })
 export class HomePage implements OnInit {

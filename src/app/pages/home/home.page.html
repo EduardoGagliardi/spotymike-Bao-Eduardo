@@ -1,8 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
+    <ion-buttons slot="start">
+      <ion-avatar>
+        <img src="assets/music/thisIsElonMusk.png" alt="Avatar"> <!-- Đường dẫn và alt của hình ảnh -->
+      </ion-avatar>
+    </ion-buttons>
+    <!-- <ion-title>
       Home
-    </ion-title>
+    </ion-title> -->
+    <ion-buttons slot="end"> 
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon> 
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">

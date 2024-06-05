@@ -9,7 +9,7 @@ import {
 } from "@ionic/angular/standalone";
 import { IonicModule } from "@ionic/angular";
 import { addIcons } from "ionicons";
-import { book, home } from "ionicons/icons";
+import { book, home, search } from "ionicons/icons";
 import { TopAlbumComponent } from "src/app/shared/components/top-album/top-album.component";
 import { MusicGenresComponent } from "src/app/shared/components/music-genres/music-genres.component";
 import { TopSongComponent } from "src/app/shared/components/top-song/top-song.component";
@@ -34,7 +34,7 @@ import { ListArtistComponent } from "src/app/shared/components/list-artist/list-
 })
 export class HomePage implements OnInit {
   constructor() {
-    addIcons({ book, home });
+    addIcons({ book, home, search });
   }
 
   ngOnInit() {}

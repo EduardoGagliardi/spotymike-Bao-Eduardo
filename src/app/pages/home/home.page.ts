@@ -13,6 +13,7 @@ import { book, home } from "ionicons/icons";
 import { TopAlbumComponent } from "src/app/shared/components/top-album/top-album.component";
 import { MusicGenresComponent } from "src/app/shared/components/music-genres/music-genres.component";
 import { TopSongComponent } from "src/app/shared/components/top-song/top-song.component";
+import { ListSongComponent } from "src/app/shared/components/list-song/list-song.component";
 
 @Component({
   selector: "app-home-home",
@@ -25,7 +26,8 @@ import { TopSongComponent } from "src/app/shared/components/top-song/top-song.co
     // FormsModule,
     TopAlbumComponent,
     MusicGenresComponent,
-    TopSongComponent
+    TopSongComponent,
+    ListSongComponent
   ],
 })
 export class HomePage implements OnInit {

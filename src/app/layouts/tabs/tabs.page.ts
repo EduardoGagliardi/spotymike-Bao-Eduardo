@@ -1,6 +1,6 @@
 import { Component, EnvironmentInjector, inject } from '@angular/core';
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
-import { Firestore } from 'firebase/firestore/lite';
+import { DocumentData, Firestore } from 'firebase/firestore/lite';
 import { addIcons } from 'ionicons';
 import { home, heart, play, person } from 'ionicons/icons';
 import { FirestoreService } from 'src/app/core/services/firestore.service';
@@ -14,8 +14,21 @@ import { FirestoreService } from 'src/app/core/services/firestore.service';
 })
 export class TabsPage {
   private albumService = inject(FirestoreService);
+  album: DocumentData[];
   constructor() {
-    this.albumService.getAlbums();
+    this.album = [];
+
     addIcons({ home, heart, play, person });
   }
+  
+  ngOnInit(): void {
+    this.getAblums();
+  }
+
+  getAblums() {
+    this.albumService.getAlbums().then(res =>{
+      this.album = res;
+    });
+  }
+
 }

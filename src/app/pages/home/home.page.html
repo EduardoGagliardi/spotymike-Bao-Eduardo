@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-avatar>
+        <img src="assets/music/thisIsElonMusk.png" alt="Avatar"> <!-- Đường dẫn và alt của hình ảnh -->
+      </ion-avatar>
+    </ion-buttons>
+    <!-- <ion-title>
+      Home
+    </ion-title> -->
+    <ion-buttons slot="end"> 
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon> 
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+ <ion-grid class="home-page">
+  <ion-row class="">
+    <app-top-album></app-top-album>
+  </ion-row>
+  <ion-row class="categories">
+    <app-music-genres></app-music-genres>
+  </ion-row>
+  <ion-row class="top">
+    <ion-col>Top Songs</ion-col>
+    <ion-col class="see-all">
+      <a href="">See all</a>
+    </ion-col>
+  </ion-row>
+  </ion-grid> 
+  <div class="scrolling-wrapper">
+    <app-top-song></app-top-song>
+  </div>
+  <ion-row class="top">
+    <ion-col>Last Played</ion-col>
+    <ion-col class="see-all">
+      <a href="">See all</a>
+    </ion-col>
+  </ion-row>
+  <div class="">
+    <app-list-song></app-list-song>
+  </div>
+  <ion-row class="top">
+    <ion-col>Artist</ion-col>
+    <ion-col class="see-all">
+      <a href="">See all</a>
+    </ion-col>
+  </ion-row>
+  <div class="">
+    <app-list-artist></app-list-artist>
+  </div>
+</ion-content>

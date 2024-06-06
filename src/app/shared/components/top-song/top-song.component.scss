@@ -1,0 +1,14 @@
+.scrollable-row {
+  display:flex;
+  -ms-overflow-x: auto;
+  -ms-overflow-y: hidden;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  white-space: nowrap;
+   /* Ensure that ion-col elements have no margin */
+  ion-col {
+    display: inline-block;
+    width: 250px;
+  }
+}
+

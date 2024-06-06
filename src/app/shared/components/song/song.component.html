@@ -1,0 +1,15 @@
+<ion-row class="song-item">
+  <ion-col size="auto" class="song-number">
+    <img class="song-image" [src]="song.image" alt="Song Image">
+  </ion-col>
+  <ion-col class="song-details">
+    <div class="song-title">{{ song.title }}</div>
+    <div class="song-artist">{{ song.artist }}</div>
+  </ion-col>
+  <ion-col size="auto" class="song-duration">
+    3:45
+  </ion-col>
+  <ion-col size="auto" class="song-options">
+    <a href=""><ion-icon id="see-new-album" name="options"></ion-icon></a>
+  </ion-col>
+</ion-row>

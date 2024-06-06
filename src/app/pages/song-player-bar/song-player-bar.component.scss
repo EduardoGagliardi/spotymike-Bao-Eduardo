@@ -2,6 +2,13 @@ ion-content {
     --background: transparent;
 }
 
+ion-grid {
+    .icon {
+        height: 100px;
+        width: 100px;
+    }
+}
+
 ion-range {
     padding-left: 10%;
     padding-right: 10%;

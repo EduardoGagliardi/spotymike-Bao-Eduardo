@@ -20,6 +20,21 @@ export class FirestoreService {
   private app = initializeApp(environment.firebase);
   private db = getFirestore(this.app);
 
+  async getCurrentUser(email: string) {
+    const userCol = collection(this.db, 'Users');
+    const q = query(userCol, where('email', '==', email));
+    const userSnapshot = await getDocs(q);
+    const users = userSnapshot.docs.map((doc) => doc.data());
+    return users[0];
+  }
+
+  async getAllUser() {
+    const userCol = collection(this.db, 'Users');
+    const userSnapshot = await getDocs(userCol);
+    const users = userSnapshot.docs.map((doc) => doc.data());
+    return users;
+  }
+
   // Get a list of cities from your database
   async getAlbums() {
     const albumsCol = collection(this.db, 'albums');

@@ -1,12 +1,45 @@
+import { ISong } from "./song";
+
 type ERoleUser = "user"| "artist";
 
 export interface IUser{
-    role: string,
-    isEmailVerified: boolean,
+    // role: string,
+    // isEmailVerified: boolean,
+    // email: string,
+    // id: string
+
+    id: string,
+    id_artist: string,
+    fistname: string,
+    lastname: string,
     email: string,
-    id: string
+    tel?: string,
+    sexe?: number,
+    dateBirth: Date,
+    createdAt: Date,
+    updatedAt: Date,
+    password: string,
+    active: number,
+    followers: number,
+    lastPlayed: ISong[],
+    songs: ISong[],
+    albums: IAlbum[],
+    playlist: ISong[],
+    followed: IFollower[],
 }
 
+export interface IFollower{
+    id:string,
+    fullname: string
+}
+export interface IPlaylist{
+    id: string,
+    title: string 
+}
+export interface IAlbum{
+    id: string,
+    name: string 
+}
 export interface IAccessToken{
     token: string,
     axprires: string | Date

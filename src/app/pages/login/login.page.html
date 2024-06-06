@@ -20,6 +20,7 @@
       <ion-input type="password" formControlName="password" name="password" label="Password" labelPlacement="floating"
         placeholder="••••••••••••••"></ion-input>
     </ion-item>
+   
     @if(form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)){
     <div>
       @if(form.get('password')?.errors?.['required'] ){

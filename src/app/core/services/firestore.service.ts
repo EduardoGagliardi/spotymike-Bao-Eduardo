@@ -8,6 +8,7 @@ import {
   limit,
   query,
   where,
+  orderBy,
 } from 'firebase/firestore/lite';
 
 import { environment } from '../../../environments/environment.prod';
@@ -26,6 +27,30 @@ export class FirestoreService {
     const albumsList = albumsSnapshot.docs.map((doc) => doc.data());
     console.log(albumsList);
     return albumsList;
+  }
+
+  async getAllSongs() {
+    const songCol = collection(this.db, 'songs');
+    const songsSnapshot = await getDocs(songCol);
+    const songList = songsSnapshot.docs.map((doc) => doc.data());
+    console.log(songList);
+    return songList;
+  }
+
+  async getTopSongs() {
+    const songCol = collection(this.db, 'songs');
+    const q = query(songCol, orderBy('viewed', 'desc') , limit(10));
+    const songsSnapshot = await getDocs(q);
+    const songList = songsSnapshot.docs.map((doc) => doc.data());
+    return songList;
+  }
+
+  async getArtists() {
+    const artistCol = collection(this.db, 'artists');
+    const artistsSnapshot = await getDocs(artistCol);
+    const artistList = artistsSnapshot.docs.map((doc) => doc.data());
+    console.log(artistList);
+    return artistList;
   }
 
   async getAlbums2() {

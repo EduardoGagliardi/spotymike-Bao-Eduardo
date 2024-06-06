@@ -6,8 +6,9 @@
   overflow-y: hidden;
   white-space: nowrap;
    /* Ensure that ion-col elements have no margin */
-   ion-col {
+  ion-col {
     display: inline-block;
+    width: 250px;
   }
 }
 

@@ -41,8 +41,8 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    // redirectTo: 'auth/login',
-    redirectTo: 'home',
+    redirectTo: 'auth/login',
+    //redirectTo: 'home',
   },
   {
     path: 'song-player',

@@ -99,7 +99,6 @@ export class LoginPage implements OnInit {
             localStorage.setItem('user', JSON.stringify({email: data.email, id: data.id_artist}));
             this.router.navigateByUrl('/home');
           }
-          console.log(data);
         });
     }
   }

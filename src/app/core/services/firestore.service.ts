@@ -48,7 +48,6 @@ export class FirestoreService {
     const songCol = collection(this.db, 'songs');
     const songsSnapshot = await getDocs(songCol);
     const songList = songsSnapshot.docs.map((doc) => doc.data());
-    console.log(songList);
     return songList;
   }
 

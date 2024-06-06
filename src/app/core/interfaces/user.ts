@@ -21,7 +21,7 @@ export interface IUser{
     password: string,
     active: number,
     followers: number,
-    lastPlayed: ISong[],
+    lastPlayed: IPlayed[],
     songs: ISong[],
     albums: IAlbum[],
     playlist: ISong[],
@@ -32,6 +32,12 @@ export interface IFollower{
     id:string,
     fullname: string
 }
+
+export interface IPlayed{
+    id: string,
+    name: string,
+}
+
 export interface IPlaylist{
     id: string,
     title: string 

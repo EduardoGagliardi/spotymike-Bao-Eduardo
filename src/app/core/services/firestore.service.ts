@@ -40,7 +40,14 @@ export class FirestoreService {
     const albumsCol = collection(this.db, 'albums');
     const albumsSnapshot = await getDocs(albumsCol);
     const albumsList = albumsSnapshot.docs.map((doc) => doc.data());
-    console.log(albumsList);
+    return albumsList;
+  }
+
+  async getAlbumsByDate() {
+    const albumsCol = collection(this.db, 'albums');
+    const q = query(albumsCol, orderBy('date', 'desc') , limit(1));
+    const albumsSnapshot = await getDocs(q);
+    const albumsList = albumsSnapshot.docs.map((doc) => doc.data());
     return albumsList;
   }
 
@@ -48,7 +55,6 @@ export class FirestoreService {
     const songCol = collection(this.db, 'songs');
     const songsSnapshot = await getDocs(songCol);
     const songList = songsSnapshot.docs.map((doc) => doc.data());
-    console.log(songList);
     return songList;
   }
 

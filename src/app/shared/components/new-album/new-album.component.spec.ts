@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { TopAlbumComponent } from './top-album.component';
+import { NewAlbumComponent } from './new-album.component';
 
-describe('TopAlbumComponent', () => {
-  let component: TopAlbumComponent;
-  let fixture: ComponentFixture<TopAlbumComponent>;
+describe('NewAlbumComponent', () => {
+  let component: NewAlbumComponent;
+  let fixture: ComponentFixture<NewAlbumComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopAlbumComponent ],
+      declarations: [ NewAlbumComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TopAlbumComponent);
+    fixture = TestBed.createComponent(NewAlbumComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

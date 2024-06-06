@@ -3,7 +3,7 @@ export interface ILyric{
     couplet: string,
 }
 
-export interface IArtist{
+export interface IArtistSong{
     _id: string
     fullname: string,
 }
@@ -17,5 +17,5 @@ export interface ISong{
     createdAt: string
     updatedAt: string
     lyrics: ILyric[],
-    artists: IArtist[],
+    artists: IArtistSong[],
 }

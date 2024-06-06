@@ -24,7 +24,6 @@ export const routes: Routes = [
     path: 'home',
     loadChildren: () =>
       import('./layouts/tabs/tabs.routes').then((m) => m.routes),
-    canActivate: [authGuard],
     // children: [
     //   {
     //     path: 'home',
@@ -41,8 +40,8 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    // redirectTo: 'auth/login',
-    redirectTo: 'home',
+    redirectTo: 'auth/login',
+    //redirectTo: 'home',
   },
   {
     path: 'song-player',

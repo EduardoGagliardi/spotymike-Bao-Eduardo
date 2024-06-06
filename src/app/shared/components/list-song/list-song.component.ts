@@ -6,6 +6,7 @@ import { options } from "ionicons/icons";
 import { SongComponent } from '../song/song.component';
 import { FirestoreService } from 'src/app/core/services/firestore.service';
 import { ISong } from 'src/app/core/interfaces/song';
+import { AuthentificationService } from 'src/app/core/services/authentification.service';
 
 
 @Component({
@@ -16,38 +17,7 @@ import { ISong } from 'src/app/core/interfaces/song';
   imports: [IonicModule,CommonModule,SongComponent]
 })
 export class ListSongComponent  implements OnInit {
-  listSongs = [
-    {
-      image: 'assets/music/thisIsElonMusk.png',
-      title: 'Song 1',
-      artist: 'Artist 1'
-    },
-    {
-      image: 'assets/music/thisIsElonMusk.png',
-      title: 'Song 2',
-      artist: 'Artist 2'
-    },
-    {
-      image: 'assets/music/thisIsElonMusk.png',
-      title: 'Song 3',
-      artist: 'Artist 3'
-    },
-    {
-      image: 'assets/music/thisIsElonMusk.png',
-      title: 'Song 4',
-      artist: 'Artist 4'
-    },
-    {
-      image: 'assets/music/thisIsElonMusk.png',
-      title: 'Song 5',
-      artist: 'Artist 5'
-    },
-    {
-      image: 'assets/music/thisIsElonMusk.png',
-      title: 'Song 6',
-      artist: 'Artist 6'
-    },
-  ];
+  private serviceAuth = inject(AuthentificationService);
   private fireBaseService = inject(FirestoreService);
   songs: ISong[];
   constructor() { 
@@ -56,11 +26,15 @@ export class ListSongComponent  implements OnInit {
   }
 
   ngOnInit() {
+    const playedList = this.serviceAuth.currentUser.lastPlayed ?? [];
     this.fireBaseService.getAllSongs().then(res => {
-      this.songs = res.map(song => song as ISong).sort((a, b) => Number(b.viewed) - Number(a.viewed)).slice(0,9);
-      console.log(this.songs)
-    })
-    .catch(err => console.log(err));
+      console.log(res)
+      this.songs = res.map(song => song as ISong);
+      this.songs = this.songs.filter(
+        (song) => playedList.filter(elm => elm.id === song._id)
+      );
+    });
+    
   }
 
 }

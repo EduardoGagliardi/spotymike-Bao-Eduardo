@@ -1,3 +1,4 @@
+import { withInterceptorsFromDi } from "@angular/common/http";
 import { ISong } from "./song";
 
 type ERoleUser = "user"| "artist";
@@ -22,10 +23,22 @@ export interface IUser{
     active: number,
     followers: number,
     lastPlayed: ISong[],
-    songs: ISong[],
-    albums: IAlbum[],
-    playlist: ISong[],
+    songs: ISongs[],
+    albums: IAlbums[],
+    playlist: IPlaylists[],
     followed: IFollower[],
+}
+
+interface IPlaylists{
+    id: string,
+}
+
+interface IAlbums{
+    id: string,
+}
+
+interface ISongs{
+    id: string,
 }
 
 export interface IFollower{

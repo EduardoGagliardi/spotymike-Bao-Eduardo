@@ -5,6 +5,7 @@ import {
   IonicRouteStrategy,
   provideIonicAngular,
 } from '@ionic/angular/standalone';
+
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
@@ -14,8 +15,8 @@ import { IonicModule } from '@ionic/angular';
 import { Firestore } from 'firebase/firestore/lite';
 import { FirestoreService } from './app/core/services/firestore.service';
 import { LocalStorageService } from './app/core/services/local-storage.service';
-import { Media } from '@ionic-native/media/ngx';
 import { DbService } from './app/core/services/db.service';
+import { Media } from '@ionic-native/media/ngx';
 
 
 if (environment.production) {

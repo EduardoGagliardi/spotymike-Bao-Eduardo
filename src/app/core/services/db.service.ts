@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { collection, getDocs, getFirestore, Firestore, DocumentData  } from 'firebase/firestore/lite';
 import { db } from 'src/environments/environment';
-import { IUser } from '../interfaces/userTest';
+import { IUser } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'

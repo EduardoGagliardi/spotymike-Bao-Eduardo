@@ -26,7 +26,7 @@ import { ModalController } from '@ionic/angular';
 import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/password-lost.component';
 import { DocumentData } from 'firebase/firestore/lite';
 import { __values } from 'tslib';
-import { IUser } from 'src/app/core/interfaces/userTest';
+import { IUser } from 'src/app/core/interfaces/user';
 import { FirestoreService } from 'src/app/core/services/firestore.service';
 import { DbService } from 'src/app/core/services/db.service';
 
@@ -77,11 +77,14 @@ export class LoginPage implements OnInit {
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {
-     this.db.getUsers().then((data: IUser[]) => {
-      console.log(data);
-      this.userList = data
-      console.log(this.userList[0].Email);
-      this.email = this.userList[0].Email;
+    this.db.getUsers().then((data: IUser[]) => {
+      if (data && data.length > 0) {
+        this.userList = data;
+        const user = this.userList[0];
+        if (user && user.email) {
+          this.email = user.email;
+        }
+      }
     })
   }
 

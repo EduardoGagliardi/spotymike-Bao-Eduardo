@@ -1,6 +1,6 @@
-import { IAdress, IArtist, ICompagny, IUserTest } from '../interfaces/userTest';
+import { IAdress, IArtist, ICompagny, IUser } from '../interfaces/userTest';
 
-export class UserTest implements IUserTest {
+export class UserTest implements IUser {
   public id: string;
   public name: string;
   public username: string;

@@ -28,13 +28,11 @@ export class ListSongComponent  implements OnInit {
   ngOnInit() {
     const playedList = this.serviceAuth.currentUser.lastPlayed ?? [];
     this.fireBaseService.getAllSongs().then(res => {
+      console.log(res)
       this.songs = res.map(song => song as ISong);
       this.songs = this.songs.filter(
         (song) => playedList.filter(elm => elm.id === song._id)
       );
-      console.log(res)
-      console.log(playedList)
-      console.log(this.songs)
     });
     
   }

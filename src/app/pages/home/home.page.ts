@@ -10,7 +10,7 @@ import {
 import { IonicModule } from "@ionic/angular";
 import { addIcons } from "ionicons";
 import { book, home, search } from "ionicons/icons";
-import { TopAlbumComponent } from "src/app/shared/components/top-album/top-album.component";
+import { NewAlbumComponent } from "src/app/shared/components/new-album/new-album.component";
 import { MusicGenresComponent } from "src/app/shared/components/music-genres/music-genres.component";
 import { TopSongComponent } from "src/app/shared/components/top-song/top-song.component";
 import { ListSongComponent } from "src/app/shared/components/list-song/list-song.component";
@@ -25,7 +25,7 @@ import { ListArtistComponent } from "src/app/shared/components/list-artist/list-
     IonicModule,
     CommonModule,
     // FormsModule,
-    TopAlbumComponent,
+    NewAlbumComponent,
     MusicGenresComponent,
     TopSongComponent,
     ListSongComponent,

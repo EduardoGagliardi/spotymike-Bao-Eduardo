@@ -23,7 +23,7 @@ export interface IUser{
     followers: number,
     lastPlayed: IPlayed[],
     songs: ISong[],
-    albums: IAlbum[],
+    albums: IAlbumId[],
     playlist: ISong[],
     followed: IFollower[],
 }
@@ -42,10 +42,12 @@ export interface IPlaylist{
     id: string,
     title: string 
 }
-export interface IAlbum{
+export interface IAlbumId{
+    date: string | number | Date;
     id: string,
     name: string 
 }
+
 export interface IAccessToken{
     token: string,
     axprires: string | Date

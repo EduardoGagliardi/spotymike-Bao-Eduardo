@@ -4,8 +4,8 @@
   </ion-col>
   <ion-col class="artist-details">
     <ion-row class="artist-title">{{ artist.fullname }}</ion-row >
-    <ion-row  class="number-album">200</ion-row >
-    <ion-row  class="artist-artist">{{ artist.follower }}</ion-row >
+    <ion-row  class="number-album">{{ artist.albums.length }} Albums</ion-row >
+    <ion-row  class="artist-artist">{{ artist.follower }} Followers</ion-row >
   </ion-col>
   <ion-col size="auto" class="artist-options">
     <a href=""><ion-icon id="see-new-album" name="options"></ion-icon></a>

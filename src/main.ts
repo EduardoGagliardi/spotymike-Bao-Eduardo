@@ -16,6 +16,7 @@ import { Firestore } from 'firebase/firestore/lite';
 import { FirestoreService } from './app/core/services/firestore.service';
 import { LocalStorageService } from './app/core/services/local-storage.service';
 
+
 if (environment.production) {
   enableProdMode();
 }
@@ -25,6 +26,8 @@ bootstrapApplication(AppComponent, {
     FirestoreService,
     LocalStorageService,
     i18nProviders,
+    DbService,
+    Media,
     provideHttpClient(),
     provideIonicAngular(),
     importProvidersFrom(IonicModule.forRoot()),

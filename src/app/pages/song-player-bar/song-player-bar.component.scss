@@ -1,0 +1,26 @@
+ion-content {
+    --background: transparent;
+}
+
+ion-grid {
+    .icon {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+ion-range {
+    padding-left: 10%;
+    padding-right: 10%;
+    --bar-background: transparent;
+    --bar-background-active: #15AB90;
+    --bar-height: 3px;
+    --bar-knob-size: 50px;
+    --knob-border-width: 10px;
+    --knob-border-style: solid;
+    --knob-border-color: #15AB90;
+}
+
+.center {
+    text-align: center;
+}

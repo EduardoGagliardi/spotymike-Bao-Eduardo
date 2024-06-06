@@ -24,6 +24,10 @@ import { LoginRequestError, LoginRequestSucess } from 'src/app/core/interfaces/l
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/password-lost.component';
+import { DbService } from 'src/app/core/services/db.service';
+import { DocumentData } from 'firebase/firestore/lite';
+import { __values } from 'tslib';
+import { IUser } from 'src/app/core/interfaces/userTest';
 
 @Component({
   selector: 'app-login',
@@ -48,8 +52,10 @@ import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/passwo
 })
 export class LoginPage implements OnInit {
   error = '';
+  email =''
   submitForm = false;
-
+  userList: IUser[] = [];
+  private db = inject(DbService);
   private router = inject(Router);
   private modalCtl = inject(ModalController);
   private serviceAuth = inject(AuthentificationService);
@@ -64,9 +70,18 @@ export class LoginPage implements OnInit {
       Validators.minLength(8),
     ]),
   });
-  constructor() {}
+  constructor() {
+   }
 
-  ngOnInit() {}
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
+  ngOnInit() {
+     this.db.getUsers().then((data: IUser[]) => {
+      console.log(data);
+      this.userList = data
+      console.log(this.userList[0].Email);
+      this.email = this.userList[0].Email;
+    })
+  }
 
   onSubmit() {
     this.error = '';

@@ -1,30 +1,27 @@
-export interface IUserTest {
-  id: string;
-  name: string;
-  username: string;
-  phone: string;
-  website: string;
-  address?: IAdress;
-  company?: ICompagny;
-  artist?: IArtist;
+type ERoleUser = "User" | "Artist";
+type ESexe = 0 | 1;
+
+export interface IUser {
+
+  // role: string;
+  // isEmailVerified: boolean;
+  Email: string;
+  firstName: string;
+  lastName: string;
+  nameArtist: string;
+  password: string;
+  tel: string;
+  sexe: number;
+  dateBirth: Date;
+  id?: string;
 }
-export interface IArtist {
-  nbLike: number;
-  year: number;
+
+interface IAccessToken {
+  token: string;
+  expires: string | Date;
 }
-export interface IGeo {
-  lat: string;
-  lng: string;
-}
-export interface IAdress {
-  street: string;
-  suite: string;
-  city: string;
-  zipcode: string;
-  geo?: IGeo;
-}
-export interface ICompagny {
-  name: string;
-  catchPhrase: string;
-  bs: string;
+
+export interface IToken {
+  access : IAccessToken;
+  refresh: IAccessToken;
 }

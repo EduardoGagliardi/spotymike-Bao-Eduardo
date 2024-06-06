@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
         <img src="assets/icon/Arrow-back.png" alt="Back arrow" class="Arrowback">
@@ -11,10 +11,13 @@
   <div id="songplayer" class="center SongImageconteiner">
     <img class="SongImage" src="assets/music/thisIsElonMusk.png">
   </div>
-  <div id="">
-    <div id="info" class="pad-10">
-      <h1 style="font-weight: bold;">Elon Musk</h1>
-      <p>this is elon musk</p>
-    </div>
+  <div id="info" class="pad-10">
+    <h1 style="font-weight: bold;">Elon Musk</h1>
+    <p>this is elon musk</p>
+    <ion-icon name="heart-outline" class="icon"></ion-icon>
+    <ion-icon name="heart-dislike-outline" class="icon"></ion-icon>
+  </div>
+  <div>
+    <app-song-player-bar></app-song-player-bar>
   </div>
 </ion-content>

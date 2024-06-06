@@ -5,7 +5,7 @@ import { IToken } from '../interfaces/user';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const localStore = inject(LocalStorageService);
-  const token = localStore.getItem('token').getValue();
-  console.log(token);
-  return token != new Array() ? true : false;
+  const token = localStore.getItem('auth').getValue();
+  
+  return token != 'false' ? true : false;
 };

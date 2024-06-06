@@ -24,6 +24,7 @@ import { LoginRequestError, LoginRequestSucess } from 'src/app/core/interfaces/l
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/password-lost.component';
+import { FirestoreService } from 'src/app/core/services/firestore.service';
 
 @Component({
   selector: 'app-login',
@@ -53,6 +54,7 @@ export class LoginPage implements OnInit {
   private router = inject(Router);
   private modalCtl = inject(ModalController);
   private serviceAuth = inject(AuthentificationService);
+  private fireBaseService = inject(FirestoreService);
 
   form: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -70,7 +72,6 @@ export class LoginPage implements OnInit {
 
   onSubmit() {
     this.error = '';
-    console.log(this.form);
     if (this.form.valid) {
       this.submitForm = true;
       this.serviceAuth
@@ -80,6 +81,7 @@ export class LoginPage implements OnInit {
             this.error = data.message;
           } else {
             // Add LocalStorage User
+            localStorage.setItem('user', JSON.stringify({email: data.email, id: data.id_artist}));
             this.router.navigateByUrl('/home');
           }
           console.log(data);

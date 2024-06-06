@@ -15,6 +15,8 @@ import { IonicModule } from '@ionic/angular';
 import { Firestore } from 'firebase/firestore/lite';
 import { FirestoreService } from './app/core/services/firestore.service';
 import { LocalStorageService } from './app/core/services/local-storage.service';
+import { Media } from '@ionic-native/media/ngx';
+import { DbService } from './app/core/services/db.service';
 
 
 if (environment.production) {

@@ -1,11 +1,11 @@
 <ion-content [fullscreen]="true">
   <div id="control" class="controls, center">
-    <ion-range min="0" max="100" value="40" class="slidebar" mode=""></ion-range>
+    <ion-range min="0" max="100" value="{{ progress }}" class="slidebar" mode=""></ion-range>
     <ion-grid>
-      <ion-icon name="play" class="icon"></ion-icon>
-      <ion-icon name="pause" class="icon"></ion-icon>
-      <ion-icon name="stop" class="icon"></ion-icon>
+      <ion-icon src="assets/icon/play-skip-back.svg" class="icon" (click)="prev()"></ion-icon>
+      <ion-icon [src]="playing ? 'assets/icon/pause-circle.svg' : 'assets/icon/play-circle.svg'" class="icon" (click)="play()"></ion-icon>
+      <ion-icon src="assets/icon/play-skip-forward.svg" class="icon" (click)="next()"></ion-icon>
     </ion-grid>
-  </div>
+    </div>
 </ion-content>
 

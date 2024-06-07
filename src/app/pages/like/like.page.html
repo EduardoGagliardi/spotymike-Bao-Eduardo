@@ -1,13 +1,59 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Like</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Like</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <ion-grid class="List_artist">
+    
+    <div class="List_header">
+      <p class="List_title">Artists</p>
+      <a class="link">See all</a>
+    </div>
+
+    <div class="List_content">
+      <div class="List_item" *ngIf="artists.length > 0; else noArtist">
+        <img class="List_image" alt="Artist image">
+      </div>
+      <ng-template #noArtist>
+        <p class="List_noArtist">No artist followed</p>
+      </ng-template>
+    </div>
+
+  </ion-grid>
+
+  <ion-grid class="List_album">
+
+    <div class="List_header">
+      <p class="List_title">Albums</p>
+      <a class="link">See all</a>
+    </div>
+
+    <div class="List_content">
+      <div class="List_item" *ngIf="albums.length > 0; else noAlbum">
+        <img class="List_image" alt="Album image">
+      </div>
+      <ng-template #noAlbum>
+        <p class="List_noAlbum">No album liked</p>
+      </ng-template>
+    </div>
+
+  </ion-grid>
+
+  <ion-grid class="List_song">
+
+    <div class="List_header">
+      <p class="List_title">Songs</p>
+      <a class="link">See all</a>
+    </div>
+
+    <div class="List_content">
+      <div class="List_item" *ngIf="songs.length > 0; else noSong">
+        <img class="List_image" alt="Song image">
+      </div>
+      <ng-template #noSong>
+        <p class="List_noSong">No song liked</p>
+      </ng-template>
+    </div>
+
+  </ion-grid>
+
 </ion-content>
+
+<app-tabs></app-tabs>

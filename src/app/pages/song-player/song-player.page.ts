@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { IonContent, IonTitle, IonButtons, IonButton, IonToolbar, IonHeader, IonRange, IonIcon } from "@ionic/angular/standalone";
-import { SongPlayerBarComponent } from "../song-player-bar/song-player-bar.component";
+import { SongPlayerBarComponent } from "../../shared/components/song-player-bar/song-player-bar.component";
 
 @Component({
   selector: 'app-song-player',

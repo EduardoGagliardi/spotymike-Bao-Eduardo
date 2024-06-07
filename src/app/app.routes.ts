@@ -47,5 +47,9 @@ export const routes: Routes = [
   {
     path: 'song-player',
     loadComponent: () => import('./pages/song-player/song-player.page').then( m => m.SongPlayerPage)
+  },  {
+    path: 'like',
+    loadComponent: () => import('./pages/like/like.page').then( m => m.LikePage)
   },
+
 ];

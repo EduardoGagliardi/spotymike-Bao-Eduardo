@@ -52,4 +52,6 @@ export const routes: Routes = [
   {
     path: 'playlist',
     loadComponent: () => import('./pages/playlist/playlist.page').then( m => m.PlaylistPage)
+  } 
+];
 

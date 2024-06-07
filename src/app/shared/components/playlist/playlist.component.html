@@ -1,3 +1,13 @@
-<p>
-  playlist works!
-</p>
+<ion-row>
+  <ion-col size="auto">
+    <img class="playlist-image" [src]="Playlist.image" alt="Playlist Image">
+  </ion-col>
+  <ion-col class="playlist-details">
+    <ion-row class="playlist-title">{{ Playlist.name }}</ion-row >
+    <ion-row  class="number-album">200</ion-row >
+    <ion-row  class="playlist-artist">{{ Playlist.follower }}</ion-row >
+  </ion-col>
+  <ion-col size="auto" class="playlist-options">
+    <a href=""><ion-icon id="see-new-album" name="options"></ion-icon></a>
+  </ion-col>
+</ion-row>

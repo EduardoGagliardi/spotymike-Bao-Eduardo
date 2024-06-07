@@ -16,6 +16,14 @@ export class DbService {
     return userList  as IUser[];
   }
 
+  async getArtists() {
+    const artistCollection = collection(db, "artists");
+    const artistSnapshot = await getDocs(artistCollection);
+    const artistList = await artistSnapshot.docs.map(doc => doc.data());
+    console.log(artistList)
+    return artistList  as IUser[]
+  }
+
   constructor() {
   }
 }

@@ -13,6 +13,7 @@ export class SongComponent  implements OnInit {
   @Input() song: any;
   constructor() { }
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {}
 
 }

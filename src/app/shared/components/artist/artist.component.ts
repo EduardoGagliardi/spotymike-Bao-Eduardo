@@ -18,6 +18,7 @@ export class ArtistComponent  implements OnInit {
     addIcons({ options});
   }
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {}
 
 }

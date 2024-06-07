@@ -11,15 +11,60 @@
       <p class="list_header_title">Artists</p>
       <a class="link">See all</a>
     </ion-row>
+    <!-- preview of 5 followed artist -->
+    <ng-container *ngIf="artists && artists.length > 0; else noArtist">
+      <ng-container *ngFor="let artist of artists | slice:0:5">
+        <ion-row>
+          <app-artist [artist]="artist"></app-artist> 
+        </ion-row>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #noArtist>
+      <ion-row>
+        <p>No artist followed</p>
+      </ion-row>
+    </ng-template>
 
     <ion-row class="list_header">
       <p class="list_header_title">Albums</p>
       <a class="link">See all</a>
     </ion-row>
+    <!-- preview of 5 liked albums -->
+
+    <!-- <ng-container *ngIf="albums && albums.length > 0; else noAlbum">
+      <ng-container *ngFor="let album of albums | slice:0:5">
+        <ion-row>
+          <app-album-card [album]="album"></app-album-card>
+        </ion-row>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #noAlbum> -->
+      <ion-row>
+        <p>No album liked</p>
+      </ion-row>
+    <!-- </ng-template> -->
 
     <ion-row class="list_header">
       <p class="list_header_title">Songs</p>
       <a class="link">See all</a>
     </ion-row>
+
+    <!-- preview of 5 liked songs -->
+
+    <ng-container *ngIf="songs && songs.length > 0; else noSong">
+      <ng-container *ngFor="let song of songs | slice:0:5">
+        <ion-row>
+          <app-song-card [song]="song"></app-song-card>
+        </ion-row>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #noSong>
+      <ion-row>
+        <p>No song liked</p>
+      </ion-row>
+    </ng-template>
   </ion-grid>
 </ion-content>

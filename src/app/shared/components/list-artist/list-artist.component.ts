@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { ArtistComponent } from '../artist/artist.component';
+import { FirestoreService } from 'src/app/core/services/firestore.service';
+import { IArtist } from 'src/app/core/interfaces/artist';
 
 @Component({
   selector: 'app-list-artist',
@@ -11,80 +13,17 @@ import { ArtistComponent } from '../artist/artist.component';
   imports: [IonicModule,CommonModule, ArtistComponent],
 })
 export class ListArtistComponent  implements OnInit {
-  listAtists = [
-    {
-      avatar: 'assets/music/thisIsElonMusk.png',
-      description: 'Test',
-      fullname: 'Taylor Swift',
-      id: 1, 
-      label : "",
-      follower: 2000
-    },
-    {
-      avatar: 'assets/music/thisIsElonMusk.png',
-      description: 'Test',
-      fullname: 'Taylor Swift',
-      id: 1, 
-      label : "",
-      follower: 2000
+  artists : IArtist[];
+  private fireBaseService = inject(FirestoreService);
 
-    },
-    {
-      avatar: 'assets/music/thisIsElonMusk.png',
-      description: 'Test',
-      fullname: 'Taylor Swift',
-      id: 1, 
-      label : "",  
-      follower: 2000
+  constructor() { 
+    this.artists = [];
+  }
 
-    },
-    {
-      avatar: 'assets/music/thisIsElonMusk.png',
-      description: 'Test',
-      fullname: 'Taylor Swift',
-      id: 1, 
-      label : "",
-      follower: 2000
-    },
-    {
-      avatar: 'assets/music/thisIsElonMusk.png',
-      description: 'Test',
-      fullname: 'Taylor Swift',
-      id: 1, 
-      label : "",      
-      follower: 2000
-
-    },
-    {
-      avatar: 'assets/music/thisIsElonMusk.png',
-      description: 'Test',
-      fullname: 'Taylor Swift',
-      id: 1, 
-      label : "",
-      follower: 2000
-
-    },
-    {
-      avatar: 'assets/music/thisIsElonMusk.png',
-      description: 'Test',
-      fullname: 'Taylor Swift',
-      id: 1, 
-      label : "",
-      follower: 2000
-
-    },
-    {
-      avatar: 'assets/music/thisIsElonMusk.png',
-      description: 'Test',
-      fullname: 'Taylor Swift',
-      id: 1, 
-      label : "",      
-      follower: 2000
-
-    }
-  ];
-  constructor() { }
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.fireBaseService.getArtists().then(res => {
+      this.artists = res.map(artist => artist as IArtist).sort((a, b) => Number(b.follower) - Number(a.follower)).slice(0,9);
+  });
+  }
 
 }

@@ -100,9 +100,8 @@ export class LoginPage implements OnInit {
           } else {
             // Add LocalStorage User
             localStorage.setItem('user', JSON.stringify({email: data.email, id: data.id_artist}));
-            this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/home/home');
           }
-          console.log(data);
         });
     }
   }

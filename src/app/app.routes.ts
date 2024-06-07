@@ -1,3 +1,4 @@
+
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guard/auth.guard';
 
@@ -47,9 +48,8 @@ export const routes: Routes = [
   {
     path: 'song-player',
     loadComponent: () => import('./pages/song-player/song-player.page').then( m => m.SongPlayerPage)
-  },  {
+  },
+  {
     path: 'playlist',
     loadComponent: () => import('./pages/playlist/playlist.page').then( m => m.PlaylistPage)
-  },
 
-];

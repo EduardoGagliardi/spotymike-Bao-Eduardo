@@ -1,4 +1,4 @@
-export interface Playlist {
+export interface IPlaylist {
     _id: string;
     title: string;
     followed: number;

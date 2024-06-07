@@ -1,3 +1,9 @@
-<p>
-  playlist works!
-</p>
+<ion-row>
+  <ion-col>
+    <img class="playlist-image" [src]="Playlist.cover" alt="Playlist Image">
+  </ion-col>
+  <ion-col>
+    <ion-row class="playlist-title">{{ Playlist.title }}</ion-row>
+    <ion-row class="playlist-artist">{{ Playlist.owner }}</ion-row>
+  </ion-col>
+</ion-row>

@@ -1,16 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" (click)="onSettingModal()">
       <ion-avatar>
-        <img src="assets/music/thisIsElonMusk.png" alt="Avatar"> <!-- Đường dẫn và alt của hình ảnh -->
+        <img src="assets/music/thisIsElonMusk.png" alt="Avatar">
       </ion-avatar>
     </ion-buttons>
-    <!-- <ion-title>
-      Home
-    </ion-title> -->
+    <ion-input *ngIf="showSearchInput"  class="search-input" type="text" placeholder="Search..."></ion-input>
     <ion-buttons slot="end"> 
-      <ion-button>
-        <ion-icon slot="icon-only" name="search"></ion-icon> 
+      <ion-button  (click)="toggleSearchInput($event)">
+        <ion-icon slot="icon-only" name="search" ></ion-icon> 
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -26,7 +24,7 @@
   <ion-row class="top">
     <ion-col>Top Songs</ion-col>
     <ion-col class="see-all">
-      <a href="">See all</a>
+      <a href="javascript:void(0);" (click)="onSongListModal()">See all</a>
     </ion-col>
   </ion-row>
   </ion-grid> 
@@ -36,7 +34,7 @@
   <ion-row class="top">
     <ion-col>Last Played</ion-col>
     <ion-col class="see-all">
-      <a href="">See all</a>
+      <a href="javascript:void(0);" (click)="onSongListModal()">See all</a>
     </ion-col>
   </ion-row>
   <div class="">
@@ -45,7 +43,7 @@
   <ion-row class="top">
     <ion-col>Artist</ion-col>
     <ion-col class="see-all">
-      <a href="">See all</a>
+      <a  href="javascript:void(0);" (click)="onListArtistPage()">See all</a>
     </ion-col>
   </ion-row>
   <div class="">

@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular'; 
 import { IAlbum } from 'src/app/core/interfaces/album';
 import { FirestoreService } from 'src/app/core/services/firestore.service';
@@ -11,6 +12,7 @@ import { FirestoreService } from 'src/app/core/services/firestore.service';
   imports: [IonicModule],
 })
 export class NewAlbumComponent  implements OnInit {
+  private router = inject(Router);
   private fireBaseService = inject(FirestoreService);
   album: IAlbum;
   constructor() { 
@@ -23,4 +25,6 @@ export class NewAlbumComponent  implements OnInit {
     })
   }
 
+  async onAlbumPage() {
+    this.router.navigate(['/album']);  }
 }

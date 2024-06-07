@@ -4,11 +4,11 @@
       <h2>New Album</h2>
       <p>{{album.categ}} Hits</p>
       <p>Discover {{album.songs?.length}} songs!</p>
-      <a href=""><ion-icon id="see-new-album" name="book"></ion-icon></a>
+      <a href="javascript:void(0);" (click)="onAlbumPage()"><ion-icon id="see-new-album" name="book"></ion-icon></a>
 
     </ion-col>
     <ion-col> 
-      <ion-img class="album-photo" src={{album.cover}} ></ion-img>
+      <ion-img class="album-photo" src={{album.cover}}></ion-img>
     </ion-col>
   </ion-row>
 </ion-grid>

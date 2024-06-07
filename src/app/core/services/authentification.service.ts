@@ -14,18 +14,24 @@ export class AuthentificationService {
   private firebase = inject(FirestoreService);
   private route = environment.url_api;
   users: IUser[] = [];
+  currentUser: IUser;
   isAuth: boolean = false;
   constructor() {
     this.firebase.getAllUser().then((users) => {
       this.users = users.map((user) => user as IUser)
-    })  
+    });
+    this.currentUser = {} as IUser;  
   }
 
   login(email: string, password: string) {
     this.isAuth = this.users.filter((user) => user.email == email && user.password == password).length > 0;
     if (this.isAuth) {
       localStorage.setItem("auth", "true");
-      return from(this.firebase.getCurrentUser(email));
+
+      return from(this.firebase.getCurrentUser(email).then(user => {
+        this.currentUser = user as IUser;
+        return user;
+      }));
     }
     localStorage.setItem("auth", "false");
     return this.errorRequest(new HttpErrorResponse({ error: { error: true, message: "email or password invalid" } }));

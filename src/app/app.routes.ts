@@ -1,4 +1,3 @@
-
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guard/auth.guard';
 
@@ -42,8 +41,8 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    // redirectTo: 'auth/login',
-    redirectTo: 'home',
+    redirectTo: 'auth/login',
+   // redirectTo: 'home',
   },
   {
     path: 'song-player',
@@ -52,6 +51,20 @@ export const routes: Routes = [
   {
     path: 'playlist',
     loadComponent: () => import('./pages/playlist/playlist.page').then( m => m.PlaylistPage)
-  } 
-];
+  },
+  {
+    path: 'artist-profil',
+    loadComponent: () => import('./pages/artist-profil/artist-profil.page').then( m => m.ArtistProfilPage)
+  },
+  {
+    path: 'list-artist',
+    loadComponent: () => import('./pages/list-artist/list-artist.page').then( m => m.ListArtistPage)
+  },
+  {
+    path: 'album',
+    loadComponent: () => import('./pages/album/album.page').then( m => m.AlbumPage)
+  },
 
+
+
+];

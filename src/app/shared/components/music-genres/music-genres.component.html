@@ -1,9 +1,12 @@
-<ion-grid>
+
   <ion-row class="categories">
     <ion-row class="genre-title">
       <ion-col>Music Genres</ion-col>
       <ion-col class="see-all">
-        <a href="">See all</a></ion-col>
+        <a href="javascript:void(0);" (click)="toggleShowAllGenres()">
+          {{ showAllGenres ? 'Show less' : 'See all' }}
+        </a>
+      </ion-col>
     </ion-row>
     <ion-row class="genre-buttons">
       <ion-button
@@ -15,33 +18,30 @@
       >
         All
       </ion-button>
-      <ion-button
-        shape="round"
-        class="genre-button"
-        fill="outline"
-        [class.selected]="selectedGenre === 'Pop'"
-        (click)="selectGenre('Pop')"
-      >
-        Pop
-      </ion-button>
-      <ion-button
-        shape="round"
-        class="genre-button"
-        fill="outline"
-        [class.selected]="selectedGenre === 'Rock'"
-        (click)="selectGenre('Rock')"
-      >
-        Rock
-      </ion-button>
-      <ion-button
-        shape="round"
-        class="genre-button"
-        fill="outline"
-        [class.selected]="selectedGenre === 'Jazz'"
-        (click)="selectGenre('Jazz')"
-      >
-        Jazz
-      </ion-button>
+      <ng-container *ngIf="!showAllGenres">
+        <ion-button
+          *ngFor="let genre of genres.slice(0, 3)"
+          shape="round"
+          class="genre-button"
+          fill="outline"
+          [class.selected]="selectedGenre === genre"
+          (click)="selectGenre(genre)"
+        >
+          {{ genre }}
+        </ion-button>
+      </ng-container>
+      <ng-container *ngIf="showAllGenres">
+        <ion-button
+          *ngFor="let genre of genres"
+          shape="round"
+          class="genre-button"
+          fill="outline"
+          [class.selected]="selectedGenre === genre"
+          (click)="selectGenre(genre)"
+        >
+          {{ genre }}
+        </ion-button>
+      </ng-container>
     </ion-row>
   </ion-row>
-</ion-grid>
+

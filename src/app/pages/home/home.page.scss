@@ -4,8 +4,27 @@
     align-items: center;
     width: 100%;
 }
+ion-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ion-input {
+  flex-grow: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.search-input {
+  width: 70%;
+  //border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  margin-left: 20px;
+  text-align: center;
+}
 .top {
-    padding: 20px 20px 0px 20px;
+    padding: 0px 20px 0px 20px;
     height: auto;
     margin-bottom: 10px; 
     display: flex;
@@ -38,4 +57,10 @@
       width: 50px;
     }
   }
-  
+.new-album{
+  width: 100%;
+}
+.categories{
+  padding: 0px 20px 0px 20px;
+  width: 100vw; 
+}

@@ -37,5 +37,6 @@ export class HomePage implements OnInit {
     addIcons({ book, home, search });
   }
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {}
 }

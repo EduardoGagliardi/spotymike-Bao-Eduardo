@@ -1,16 +1,29 @@
 <ion-content [fullscreen]="true">
 
   <ion-grid class="List_artist">
-    
-    <div class="List_header">
+
+    <div class="list_header">
       <p class="List_title">Artists</p>
       <a class="link">See all</a>
     </div>
 
     <div class="List_content">
-      <div class="List_item" *ngIf="artists.length > 0; else noArtist">
-        <img class="List_image" alt="Artist image">
-      </div>
+      <div class="List_item" >
+          <div class="artist-avatar">
+            <img class="artist-image" src="assets/music/thisIsElonMusk.png" alt="artist Image">
+          </div>
+          <div class="artist-details">
+            <div class="artist-title">riana</div>
+            <div class="number-album"> 200 albums </div>
+            <div class="artist-artist"> 2000 followers</div>
+          </div>
+          <div class="artist-options">
+            <ion-icon src="assets/icon/menu-outline.svg"></ion-icon>
+          </div>
+          <div class="artist-heart">
+            <ion-icon src="assets/icon/heart.svg"></ion-icon>
+          </div>
+        </div>
       <ng-template #noArtist>
         <p class="List_noArtist">No artist followed</p>
       </ng-template>
@@ -56,4 +69,4 @@
 
 </ion-content>
 
-<app-tabs></app-tabs>
+<!-- <app-tabs></app-tabs> -->

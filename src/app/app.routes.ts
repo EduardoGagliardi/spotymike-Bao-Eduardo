@@ -1,3 +1,4 @@
+
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guard/auth.guard';
 
@@ -24,6 +25,7 @@ export const routes: Routes = [
     path: 'home',
     loadChildren: () =>
       import('./layouts/tabs/tabs.routes').then((m) => m.routes),
+    canActivate: [authGuard],
     // children: [
     //   {
     //     path: 'home',
@@ -40,11 +42,14 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'auth/login',
-    //redirectTo: 'home',
+    // redirectTo: 'auth/login',
+    redirectTo: 'home',
   },
   {
     path: 'song-player',
     loadComponent: () => import('./pages/song-player/song-player.page').then( m => m.SongPlayerPage)
   },
-];
+  {
+    path: 'playlist',
+    loadComponent: () => import('./pages/playlist/playlist.page').then( m => m.PlaylistPage)
+

@@ -24,7 +24,6 @@ export class TopSongComponent implements OnInit {
   ngOnInit() {
     this.fireBaseService.getAllSongs().then(res => {
       this.songs = res.map(song => song as ISong).sort((a, b) => Number(b.viewed) - Number(a.viewed)).slice(0,9);
-      console.log(this.songs)
     })
     .catch(err => console.log(err));
   }

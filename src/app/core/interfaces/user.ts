@@ -11,7 +11,7 @@ export interface IUser{
 
     id: string,
     id_artist: string,
-    fistname: string,
+    firstname: string,
     lastname: string,
     email: string,
     tel?: string,

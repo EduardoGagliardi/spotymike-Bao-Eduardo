@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+    <ion-buttons slot="end"  (click)="onSettingModal()"> 
+      <ion-button>
+        <ion-icon slot="icon-only" name="settings" class="btn-setting"></ion-icon> 
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-grid class="profile-grid">
+    <ion-row class="profile-header" justify-content-center>
+      <ion-col size="auto" class="profile-avatar">
+        <ion-avatar>
+          <img src="assets/avatar/album-photo.jpg" alt="Avatar">
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+    <ion-row class="profile-name" justify-content-center>
+      <ion-col size="auto">
+        <h2>{{ username }}</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row class="profile-stats" justify-content-center>
+      <ion-col size="auto" class="stat">
+        <ion-row>{{ followers }}</ion-row>
+        <ion-row> Followers</ion-row> 
+      </ion-col>
+      <ion-col size="auto" class="stat">
+        <ion-row>{{ following }}</ion-row>
+        <ion-row> Following</ion-row> 
+      </ion-col>
+    </ion-row>
+    <ion-row class="profile-actions" justify-content-center>
+      <ion-col size="auto">
+        <ion-button (click)="editProfile()">Edit Profile</ion-button>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button (click)="shareProfile()">Share Profile</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="top">
+      <ion-col class="title-part">My playlist</ion-col>
+      <ion-col class="see-all">
+        <a href="javascript:void(0);" (click)="onListPlaylistPage()">See all</a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="scrolling-wrapper">
+    <div class="scrollable-row">
+      <ng-container *ngFor="let playlist of playlists">
+        <ion-col >
+          <app-playlist-profil [playlist]="playlist"></app-playlist-profil>
+        </ion-col>
+      </ng-container>
+    </div>
+  </div>
+  <ion-row class="top">
+    <ion-col class="title-part">Artist followed</ion-col>
+    <ion-col class="see-all">
+      <a href="javascript:void(0);" (click)="onListArtistPage()">See all</a>
+    </ion-col>
+  </ion-row>
+  <div>
+    <app-list-artist-followed></app-list-artist-followed>
+  </div>
+</ion-content>

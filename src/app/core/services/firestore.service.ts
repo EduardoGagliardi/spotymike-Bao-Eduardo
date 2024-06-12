@@ -70,10 +70,16 @@ export class FirestoreService {
     const artistCol = collection(this.db, 'artists');
     const artistsSnapshot = await getDocs(artistCol);
     const artistList = artistsSnapshot.docs.map((doc) => doc.data());
-    console.log(artistList);
     return artistList;
   }
 
+  async getAllPlaylists() {
+    const playlistCol = collection(this.db, 'playlists');
+    const playlistSnapshot = await getDocs(playlistCol);
+    const playlistList = playlistSnapshot.docs.map((doc) => doc.data());
+    console.log(playlistList);
+    return playlistList;
+  }
   async getAlbums2() {
     const albumsCol = collection(this.db, 'albums');
     const q = query(albumsCol, where('artist.name', '==', 'Mike'), limit(3));

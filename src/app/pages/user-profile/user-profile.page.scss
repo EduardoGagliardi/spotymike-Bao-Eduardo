@@ -1,0 +1,125 @@
+.btn-setting{
+    color: black;
+  //  --color-selected: #15AB90;  
+    ion-icon {
+      color: var(--color);
+    }
+}
+ion-content {
+    --background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .profile-avatar ion-avatar {
+    width: 150px;
+    height: 150px;
+    margin: 20px 0;
+  }
+  
+  .profile-name h2 {
+    margin: 10px 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .profile-stats {
+    display: flex;
+    justify-content: center;
+    //margin: 20px 0;
+  }
+  
+  .stat {
+    margin: 0 50px;
+    text-align: center;
+    ion-row{
+        display: flex;
+        justify-content: center;
+    }
+  }
+  
+  .profile-actions {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  
+  .profile-actions ion-button {
+    margin: 10px 5px;
+    width: 170px;
+    --background: #15AB90;
+    border-radius: 15px;
+  }
+  .top {
+    padding: 0px 20px 0px 20px;
+    height: auto;
+    margin-bottom: 10px; 
+    display: flex;
+    align-items: center;
+    width: 100vw; 
+  
+    ion-col {
+      font-size: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .title-part{
+        text-align: left;
+    }
+    .see-all {
+      text-align: right;
+  
+      a {
+        color: #15ab90;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    .scrollable-row {
+      display:flex;
+      -ms-overflow-x: auto;
+      -ms-overflow-y: hidden;
+      overflow-x: auto !important;
+      overflow-y: hidden;
+      white-space: nowrap;
+      ion-col {
+        display: inline-block;
+        width: 250px;
+      }
+      .card {
+        display: inline-block;
+        margin: 10px;
+        width: 50px;
+      }
+    }
+    .song-card {
+      width:150px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      .song-image{
+          width:130px;
+          height:130px;
+      }
+      .song-title{
+          font-size: 12px;
+      }
+    }
+  }
+ 
+  

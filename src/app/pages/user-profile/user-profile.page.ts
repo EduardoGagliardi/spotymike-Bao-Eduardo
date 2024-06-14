@@ -79,8 +79,6 @@ export class UserProfilePage {
 
      this.fireBaseService.getAllPlaylists().then((data) => {
         this.playlists = data.map((playlist) => playlist as IPlaylist);
-        console.log(this.playlists);
-        console.log(user);
         this.playlists = this.playlists.filter(
           (song) => song.owner == user.id
         );
@@ -105,7 +103,9 @@ export class UserProfilePage {
     this.router.navigate(["/list-artist"]);
   }
 
-  editProfile() {}
+  editProfile() {
+    this.router.navigate(["/edit-profil"]);
+  }
 
   shareProfile() {}
 }

@@ -22,7 +22,7 @@ export class ArtistComponent  implements OnInit {
   }
 
   ngOnInit() {}
-  onClickGetArtistProfil() {
-    this.router.navigate(['/artist-profil']);
+  onClickGetArtistProfil(id: string) {
+    this.router.navigate(['/artist-profil'], { queryParams: { id: id } });
   }
 }

@@ -49,8 +49,8 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/song-player/song-player.page').then( m => m.SongPlayerPage)
   },
   {
-    path: 'playlist',
-    loadComponent: () => import('./pages/playlist/playlist.page').then( m => m.PlaylistPage)
+    path: 'playlist/:id',
+    loadComponent: () => import('./pages/playlist/playlist.page').then( m => m.PlaylistPage),
   },
   {
     path: 'artist-profil',
@@ -64,6 +64,11 @@ export const routes: Routes = [
     path: 'album',
     loadComponent: () => import('./pages/album/album.page').then( m => m.AlbumPage)
   },
+  {
+    path: 'edit-profil',
+    loadComponent: () => import('./pages/edit-profil/edit-profil.page').then( m => m.EditProfilPage)
+  },
+
 
 
 

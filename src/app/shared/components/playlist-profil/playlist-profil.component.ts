@@ -1,4 +1,5 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -10,9 +11,11 @@ import { IonicModule } from '@ionic/angular';
 })
 export class PlaylistProfilComponent  implements OnInit {
   @Input() playlist: any;
-
+  private router = inject(Router);
   constructor() { }
 
   ngOnInit() {}
-
+ onClickGetPlaylistPlayer(id: string) {
+    this.router.navigate(["/playlist", id]);
+  }
 }

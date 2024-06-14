@@ -12,6 +12,8 @@ import {
 } from 'firebase/firestore/lite';
 
 import { environment } from '../../../environments/environment.prod';
+import { IPlaylist } from '../interfaces/playlist';
+import { IArtist } from '../interfaces/artist';
 
 @Injectable({
   providedIn: 'root',
@@ -73,12 +75,42 @@ export class FirestoreService {
     return artistList;
   }
 
+  /**
+   * Get an artist by id from the 'artists' collection in Firestore.
+   *
+   * @param {string} id - The id of the artist to retrieve.
+   * @return {Promise<IArtist>} - A promise that resolves to an array of artist objects.
+   */
+  async getAnArtist(id: string) {
+    // Get a reference to the 'artists' collection
+    const artistCol = collection(this.db, 'artists');
+
+    // Execute a query to retrieve the artist with the specified id
+    const q = query(artistCol, where('id', '==', id), limit(1));
+    const artistsSnapshot = await getDocs(q);
+    
+    return artistsSnapshot.docs[0].data() as IArtist;
+  }
+
+
   async getAllPlaylists() {
     const playlistCol = collection(this.db, 'playlists');
     const playlistSnapshot = await getDocs(playlistCol);
     const playlistList = playlistSnapshot.docs.map((doc) => doc.data());
     console.log(playlistList);
     return playlistList;
+  }
+
+  async getAPlaylist(id :string) {
+    const playlistCol = collection(this.db, 'playlists');
+    const q = query(playlistCol, where('id', '==', id), limit(1));
+    const playlistSnapshot = await getDocs(q);
+    if (!playlistSnapshot.empty) {
+
+      const doc = playlistSnapshot.docs[0];
+      return doc.data() as IPlaylist;
+    }
+    return null;
   }
   async getAlbums2() {
     const albumsCol = collection(this.db, 'albums');

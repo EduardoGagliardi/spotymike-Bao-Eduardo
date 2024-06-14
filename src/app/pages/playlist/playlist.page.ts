@@ -2,6 +2,9 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonText } from '@ionic/angular/standalone';
+import { ActivatedRoute } from '@angular/router';
+import { FirestoreService } from 'src/app/core/services/firestore.service';
+import { IPlaylist } from 'src/app/core/interfaces/playlist';
 
 @Component({
   selector: 'app-playlist',
@@ -11,11 +14,19 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, I
   imports: [IonText, IonCol, IonRow, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class PlaylistPage implements OnInit {
+  playlistId: any;
+  playlist: any;
+  private fireBaseService = inject(FirestoreService);
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+   }
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit() {
+  async ngOnInit() {
+    this.route.params.subscribe(async params => {
+      this.playlistId = params['id'];
+      this.playlist = await this.fireBaseService.getAPlaylist(this.playlistId);
+      console.log(this.playlist);
+    });
   }
-
+  
 }

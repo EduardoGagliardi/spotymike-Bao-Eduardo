@@ -75,7 +75,7 @@ export class UserProfilePage {
     const user = this.serviceAuth.currentUser as IUser;
     this.username = user.firstname + " " + user.lastname;
     this.followers = user.followers == null ? 0 : user.followers;
-    this.following = user.followed.length == null ? 0 : user.followed.length;
+    this.following = user.followed?.length == null ? 0 : user.followed.length;
 
      this.fireBaseService.getAllPlaylists().then((data) => {
         this.playlists = data.map((playlist) => playlist as IPlaylist);

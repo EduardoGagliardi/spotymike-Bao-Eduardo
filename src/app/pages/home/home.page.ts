@@ -1,12 +1,6 @@
 import { Component, HostListener, OnInit, inject ,ElementRef } from "@angular/core";
 import { CommonModule } from "@angular/common";
 // import { FormsModule } from "@angular/forms";
-import {
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-} from "@ionic/angular/standalone";
 import { IonicModule, ModalController } from "@ionic/angular";
 import { addIcons } from "ionicons";
 import { book, home, search } from "ionicons/icons";

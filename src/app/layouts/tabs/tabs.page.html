@@ -1,4 +1,19 @@
 <ion-tabs>
+  <div class="fixed-controls">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col  class="control-button" (click)="play()">
+          Play
+        </ion-col>
+        <ion-col  class="control-button" (click)="pause()">
+          Pause
+        </ion-col>
+        <ion-col class="control-button">
+          Stop
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="home" href="/home/home">
       <ion-icon aria-hidden="true"  name="home"></ion-icon>

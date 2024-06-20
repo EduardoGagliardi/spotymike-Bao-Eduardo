@@ -23,12 +23,14 @@ export class AuthentificationService {
     this.currentUser = {} as IUser;  
   }
 
-  login(email: string, password: string) {
+  async login(email: string, password: string) {
+    //user = this.users.find((user) => user.email == email) as IUser;
+    //this.isAuth = await bcrypt.compare(password, user.password);
     this.isAuth = this.users.filter((user) => user.email == email && user.password == password).length > 0;
     if (this.isAuth) {
       localStorage.setItem("auth", "true");
 
-      return from(this.firebase.getCurrentUser(email).then(user => {
+      return from(this.firebase.getAUser(email).then(user => {
         this.currentUser = user as IUser;
         return user;
       }));

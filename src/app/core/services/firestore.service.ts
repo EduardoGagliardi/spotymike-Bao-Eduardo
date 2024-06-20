@@ -9,11 +9,14 @@ import {
   query,
   where,
   orderBy,
+  doc,
+  setDoc,
 } from 'firebase/firestore/lite';
 
 import { environment } from '../../../environments/environment.prod';
 import { IPlaylist } from '../interfaces/playlist';
 import { IArtist } from '../interfaces/artist';
+import { IUser } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +25,7 @@ export class FirestoreService {
   private app = initializeApp(environment.firebase);
   private db = getFirestore(this.app);
 
-  async getCurrentUser(email: string) {
+  async getAUser(email: string) {
     const userCol = collection(this.db, 'Users');
     const q = query(userCol, where('email', '==', email));
     const userSnapshot = await getDocs(q);
@@ -35,6 +38,12 @@ export class FirestoreService {
     const userSnapshot = await getDocs(userCol);
     const users = userSnapshot.docs.map((doc) => doc.data());
     return users;
+  }
+
+  // Create a user
+  async createUser(user: IUser) {
+    const userDoc = doc(this.db, 'Users', user.id);
+    await setDoc(userDoc, user);
   }
 
   // Get a list of cities from your database

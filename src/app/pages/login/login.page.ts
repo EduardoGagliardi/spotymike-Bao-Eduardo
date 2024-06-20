@@ -88,12 +88,12 @@ export class LoginPage implements OnInit {
     })
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.error = '';
     if (this.form.valid) {
       this.submitForm = true;
-      this.serviceAuth
-        .login(this.form.value.email, this.form.value.password)
+      (await this.serviceAuth
+        .login(this.form.value.email, this.form.value.password))
         .subscribe((data: any | LoginRequestError) => {
           if (data.error) {
             this.error = data.message;
@@ -111,5 +111,8 @@ export class LoginPage implements OnInit {
       component: PasswordLostComponent,
     });
     modal.present();
+  }
+  async onRegister() {
+    this.router.navigateByUrl('/auth/register');
   }
 }

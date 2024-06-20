@@ -16,6 +16,7 @@ import { FirestoreService } from './app/core/services/firestore.service';
 import { LocalStorageService } from './app/core/services/local-storage.service';
 import { Media } from '@ionic-native/media/ngx';
 import { DbService } from './app/core/services/db.service';
+import { AudioService } from './app/core/services/audio.service';
 
 
 if (environment.production) {
@@ -24,6 +25,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
+    AudioService,
     FirestoreService,
     LocalStorageService,
     i18nProviders,

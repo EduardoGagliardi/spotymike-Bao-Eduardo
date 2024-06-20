@@ -10,3 +10,37 @@ ion-tab-button {
       }
     }
 }
+.fixed-controls {
+  position: fixed;
+  bottom: 56px; /* Adjust this value according to the height of your tab bar */
+  width: 100%;
+  z-index: 9999;
+  background-color: white; /* Background color to ensure it covers content below */
+  border-top: 1px solid #ccc; /* Optional: Add a top border for separation */
+}
+
+.fixed-controls ion-grid {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  width: 100%; /* Optional: Padding for better spacing */
+}
+
+.fixed-controls ion-col.control-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px 10px; /* Optional: Padding for better spacing */
+  cursor: pointer;
+  font-weight: bold;
+  border: #15AB90 1px solid;
+  border-radius: 5px;
+  margin: 0 10px;
+  width: 30%;
+}
+
+ion-tab-bar {
+  position: relative;
+  z-index: 1;
+}

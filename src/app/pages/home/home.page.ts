@@ -12,6 +12,12 @@ import { ListArtistComponent } from "src/app/shared/components/list-artist/list-
 import { SettingComponent } from "src/app/shared/modal/setting/setting.component";
 import { SongListComponent } from "src/app/shared/modal/song-list/song-list.component";
 import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { ISong } from "src/app/core/interfaces/song";
+import { loadSong } from "src/store/action/song.action";
+import { AppState } from "src/store/app.state";
+import { Store } from "@ngrx/store";
+import { selectStoreList } from "src/store/selector/song.selector";
 
 @Component({
   selector: "app-home-home",
@@ -30,6 +36,8 @@ import { Router } from "@angular/router";
   ],
 })
 export class HomePage implements OnInit {
+  song$ : Observable<ISong[]> = new Observable<ISong[]>();
+  store = inject(Store<AppState>);
   private router = inject(Router);
   private modalCtl = inject(ModalController);
   showSearchInput = false;
@@ -38,7 +46,14 @@ export class HomePage implements OnInit {
     
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.dispatch(loadSong());
+
+    this.song$ = this.store.select(selectStoreList);
+    console.log(this.song$);
+    //this.store.dispatch(addSong({}));
+  }
+  
   async onListArtistPage() {
     this.router.navigate(['/list-artist']);
   }

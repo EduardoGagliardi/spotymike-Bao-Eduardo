@@ -17,7 +17,9 @@ import { LocalStorageService } from './app/core/services/local-storage.service';
 import { Media } from '@ionic-native/media/ngx';
 import { DbService } from './app/core/services/db.service';
 import { AudioService } from './app/core/services/audio.service';
-
+import { provideStore } from '@ngrx/store';
+import { songReducer } from './store/reducer/song.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 if (environment.production) {
   enableProdMode();
@@ -35,6 +37,10 @@ bootstrapApplication(AppComponent, {
     provideIonicAngular(),
     importProvidersFrom(IonicModule.forRoot()),
     provideRouter(routes),
+    provideStore(songReducer),
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    importProvidersFrom(
+      StoreDevtoolsModule.instrument({ maxAge: 50, logOnly: environment.production })
+    )
   ],
 });

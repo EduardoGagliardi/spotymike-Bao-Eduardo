@@ -1,3 +1,4 @@
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start" (click)="onSettingModal()">
@@ -14,7 +15,10 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
- <ion-grid class="home-page">
+  <!-- <div *ngFor="let song of songs$ | async">
+    <div>{{song.title}}</div>
+  </div> -->
+ <ion-grid class="home-page">x  
   <ion-row class="">
     <app-new-album></app-new-album>
   </ion-row>

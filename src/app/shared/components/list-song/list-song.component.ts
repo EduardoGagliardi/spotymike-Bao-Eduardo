@@ -30,7 +30,7 @@ export class ListSongComponent  implements OnInit {
     this.fireBaseService.getAllSongs().then(res => {
       this.songs = res.map(song => song as ISong);
       this.songs = this.songs.filter(
-        (song) => playedList.filter(elm => elm.id === song._id)
+        (song) => playedList.filter(elm => elm.id === song.id)
       );
     });
     

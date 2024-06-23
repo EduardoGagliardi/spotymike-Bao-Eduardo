@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Favoris
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+  <ion-content [fullscreen]="true">
+    <ion-grid class="home-page">
+      <ion-row class="top">
+        <ion-col>Songs</ion-col>
+        <ion-col class="see-all">
+          <a href="">See all</a>
+        </ion-col>
+      </ion-row>
+      <app-top-song></app-top-song>
+     
+      <ion-row class="top">
+        <ion-col>Artists</ion-col>
+        <ion-col class="see-all">
+          <a href="">See all</a>
+        </ion-col>
+      </ion-row>
+        <app-list-artist></app-list-artist>
+
+      <ion-row class="top">
+        <ion-col>Albums</ion-col>
+        <ion-col class="see-all">
+          <a href="">See all</a>
+        </ion-col>
+      </ion-row>
+      <app-list-album-favoris></app-list-album-favoris>
+    </ion-grid> 
+     
+   </ion-content>

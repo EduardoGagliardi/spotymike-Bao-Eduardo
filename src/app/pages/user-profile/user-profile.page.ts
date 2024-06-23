@@ -37,35 +37,6 @@ export class UserProfilePage {
   followers: number = 0;
   following: number = 0;
 
-  // playlists = [
-  //   {
-  //     id: 1,
-  //     title: "This is n° 1",
-  //     cover: "assets/avatar/album-photo.jpg",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "This is n° 2",
-  //     cover: "assets/avatar/album-photo.jpg",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "This is n° 3",
-  //     cover: "assets/avatar/album-photo.jpg",
-  //   },
-
-  //   {
-  //     id: 4,
-  //     title: "This is n° 4",
-  //     cover: "assets/avatar/album-photo.jpg",
-  //   },
-  //   {
-  //     id: 5,
-  //     title: "This is n° 5",
-  //     cover: "assets/avatar/album-photo.jpg",
-  //   },
-  // ];
-
   playlists: IPlaylist[] = [];
   constructor() {
     addIcons({ settings });

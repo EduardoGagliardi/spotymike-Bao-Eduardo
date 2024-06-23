@@ -1,0 +1,52 @@
+.song-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    //border-bottom: 1px solid #ccc; /* Add a border between items */
+    justify-content: space-between; /* Space between items */
+  }
+  
+  .song-number {
+    flex: 0 0 auto;
+  }
+  
+  .song-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  .song-details {
+    flex: 1;
+    padding-left: 10px;
+  }
+  
+  .song-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .song-artist {
+    color: #666;
+  }
+  
+  .song-duration {
+    text-align: right;
+    flex: 0 0 50px;
+  }
+  
+  .song-options {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 0 0 30px;
+  }
+  
+  ion-icon {
+    font-size: 24px;
+    cursor: pointer;
+    color: #15AB90; /* Adjust the icon color */
+  }
+  

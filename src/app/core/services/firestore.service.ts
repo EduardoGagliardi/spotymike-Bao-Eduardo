@@ -17,6 +17,8 @@ import { environment } from '../../../environments/environment.prod';
 import { IPlaylist } from '../interfaces/playlist';
 import { IArtist } from '../interfaces/artist';
 import { IUser } from '../interfaces/user';
+import { ISong } from '../interfaces/song';
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -67,6 +69,12 @@ export class FirestoreService {
     const songsSnapshot = await getDocs(songCol);
     const songList = songsSnapshot.docs.map((doc) => doc.data());
     return songList;
+  }
+
+   getAllSongsA() {
+    console.log("call get songs")
+    const songCol = collection(this.db, 'songs');
+    return from(getDocs(songCol).then((snapshot) => snapshot.docs.map((doc) => doc.data() as ISong)));
   }
 
   async getTopSongs() {
@@ -126,7 +134,7 @@ export class FirestoreService {
     const q = query(albumsCol, where('artist.name', '==', 'Mike'), limit(3));
     const albumsSnapshot = await getDocs(q);
     const albumsList = albumsSnapshot.docs.map((doc) => doc.data());
-    console.log(albumsList);
+    //console.log(albumsList);
     return albumsList;
   }
 

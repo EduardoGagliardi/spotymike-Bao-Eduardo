@@ -1,0 +1,23 @@
+.top {
+    padding: 0px 20px 0px 20px;
+    height: auto;
+    margin-bottom: 10px; 
+    display: flex;
+    align-items: center;
+    width: 100vw; 
+  
+    ion-col {
+      font-size: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .see-all {
+      text-align: right;
+  
+      a {
+        color: #15ab90;
+        text-decoration: none;
+      }
+    }
+  }

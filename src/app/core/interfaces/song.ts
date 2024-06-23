@@ -9,7 +9,7 @@ export interface IArtistSong{
 }
 
 export interface ISong{
-    _id: string,
+    id: string,
     title: string,
     songUrl: string,
     cover: string,

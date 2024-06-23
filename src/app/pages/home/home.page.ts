@@ -12,11 +12,11 @@ import { ListArtistComponent } from "src/app/shared/components/list-artist/list-
 import { SettingComponent } from "src/app/shared/modal/setting/setting.component";
 import { SongListComponent } from "src/app/shared/modal/song-list/song-list.component";
 import { Router } from "@angular/router";
-import { Observable } from "rxjs";
+import { Observable, map } from "rxjs";
 import { ISong } from "src/app/core/interfaces/song";
 import { loadSong } from "src/store/action/song.action";
 import { AppState } from "src/store/app.state";
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
 import { selectStoreList } from "src/store/selector/song.selector";
 
 @Component({
@@ -36,22 +36,21 @@ import { selectStoreList } from "src/store/selector/song.selector";
   ],
 })
 export class HomePage implements OnInit {
-  song$ : Observable<ISong[]> = new Observable<ISong[]>();
   store = inject(Store<AppState>);
+  songs$ : Observable<ISong[]> = new Observable<ISong[]>();
   private router = inject(Router);
   private modalCtl = inject(ModalController);
   showSearchInput = false;
   constructor(private eRef: ElementRef) {
     addIcons({ book, home, search });
-    
   }
 
   ngOnInit() {
+    this.store.select(state => state).subscribe(state => console.log({ state })); 
+    this.store.select(selectStoreList).subscribe(songs => console.log(songs))
+    this.songs$ = this.store.select(selectStoreList);
     this.store.dispatch(loadSong());
-
-    this.song$ = this.store.select(selectStoreList);
-    console.log(this.song$);
-    //this.store.dispatch(addSong({}));
+    //this.store.dispatch(addSongs({}));
   }
   
   async onListArtistPage() {

@@ -1,16 +1,16 @@
 import { ISong } from "src/app/core/interfaces/song";
 import { EntityState,EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 import { createReducer, on } from "@ngrx/store";
-import * as ActionSOngs from '../action/song.action';
+import * as ActionSongs from '../action/song.action';
 
 export interface SongState extends EntityState<ISong> {
     load: boolean;
+    songs: ISong[]
 }
-
 
 export function selectUserId(a: ISong): string {
     //In this case this would be optional since primary key is id
-    return a._id;
+    return a.id;
   }
   
   export function sortByTitle(a: ISong, b: ISong): number {
@@ -24,16 +24,30 @@ export function selectUserId(a: ISong): string {
 
   //end sort
   export const initialState : SongState = adaptater.getInitialState({
-    load: false
+    load: false,
+    songs: [],
 })
 
 export const songReducer = createReducer(
     initialState,
-    on(ActionSOngs.loadSong, (state) => state),
-    on(ActionSOngs.addSong, (state, listSong: any) => ({
+    on(ActionSongs.loadingSongs, (state) => ({...state, load: true})),
+    on(ActionSongs.loadedSongs, (state) => ({...state, load: false})),
+    on(ActionSongs.loadSong, (state) => {
+      // does not need define this event handler
+      console.log('load song')
+      return {...state};
+    }),
+    on(ActionSongs.addSongs, (state, listSong: any) => ({
         ...state,
-        songs: listSong.songs,
-      })));
+        songs: [...state.songs, listSong.songs],
+      })),
+    on(ActionSongs.setSongs, (state, listSong: any) => {
+      console.log(listSong)
+      return {
+      ...state,
+      songs: listSong.songs,
+    }})
+    );
 
 
 // recupération

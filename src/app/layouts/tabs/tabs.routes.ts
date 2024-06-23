@@ -15,7 +15,7 @@ export const routes: Routes = [
       {
         path: 'like',
         loadComponent: () =>
-          import('../../pages/tab2/tab2.page').then((m) => m.Tab2Page),
+          import('../../pages/favoris/favoris.page').then((m) => m.FavorisPage),
       },
       {
         path: 'playlist',

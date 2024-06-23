@@ -7,8 +7,11 @@
       <a href="javascript:void(0);" (click)="onAlbumPage()"><ion-icon id="see-new-album" name="book"></ion-icon></a>
 
     </ion-col>
-    <ion-col> 
+    <!-- <ion-col> 
       <ion-img class="album-photo" src={{album.cover}}></ion-img>
+    </ion-col> -->
+    <ion-col *ngIf="newAlbum$ | async as album"> 
+      <ion-img class="album-photo" [src]="album?.cover"></ion-img>
     </ion-col>
   </ion-row>
 </ion-grid>

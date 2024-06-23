@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore/lite";
 import { ISongArtist } from "./artist";
 import { IArtistSong } from "./song";
 
@@ -7,8 +8,8 @@ export interface IAlbum{
     categ: string,
     label: string,
     cover: string,
-    createdAt: Date,
-    updatedAt: Date,
+    createdAt: Timestamp,
+    updatedAt: Timestamp,
     songs: ISongArtist[],
     artists: IArtistSong[]
 }

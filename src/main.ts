@@ -21,7 +21,9 @@ import { StoreModule, provideStore } from '@ngrx/store';
 import { songReducer } from './store/reducer/song.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
-import * as songEffects from './store/effect/songs.effects'
+import * as songEffects from './store/effect/songs.effects';
+import * as albumEffects  from './store/effect/albums.effects';
+import { albumReducer } from './store/reducer/album.reducer';
 if (environment.production) {
   enableProdMode();
 }
@@ -36,13 +38,13 @@ bootstrapApplication(AppComponent, {
     Media,
     provideHttpClient(),
     provideIonicAngular(),
-    provideEffects(songEffects),
-    provideStore({ songs: songReducer }),
+    provideEffects(songEffects,albumEffects),
+    provideStore({ songs: songReducer, albums: albumReducer }),
     importProvidersFrom(IonicModule.forRoot()),
     provideRouter(routes),
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     importProvidersFrom(
-      StoreModule.forRoot({songs: songReducer}),
+      StoreModule.forRoot({songs: songReducer, albums: albumReducer}),
       StoreDevtoolsModule.instrument({ maxAge: 50, logOnly: environment.production })
     )
   ],

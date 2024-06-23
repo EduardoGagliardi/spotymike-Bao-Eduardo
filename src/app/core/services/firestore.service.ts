@@ -19,6 +19,7 @@ import { IArtist } from '../interfaces/artist';
 import { IUser } from '../interfaces/user';
 import { ISong } from '../interfaces/song';
 import { from } from 'rxjs';
+import { IAlbum } from '../interfaces/album';
 
 @Injectable({
   providedIn: 'root',
@@ -55,7 +56,12 @@ export class FirestoreService {
     const albumsList = albumsSnapshot.docs.map((doc) => doc.data());
     return albumsList;
   }
-
+  getAllAlbums() {
+    const albumCol = collection(this.db, 'albums');
+    return from(getDocs(albumCol).then((snapshot) => {
+      return snapshot.docs.map((doc) => doc.data() as IAlbum)
+    }));
+  }
   async getAlbumsByDate() {
     const albumsCol = collection(this.db, 'albums');
     const q = query(albumsCol, orderBy('date', 'desc') , limit(1));
@@ -72,7 +78,7 @@ export class FirestoreService {
   }
 
    getAllSongsA() {
-    console.log("call get songs")
+    //console.log("call get songs")
     const songCol = collection(this.db, 'songs');
     return from(getDocs(songCol).then((snapshot) => snapshot.docs.map((doc) => doc.data() as ISong)));
   }

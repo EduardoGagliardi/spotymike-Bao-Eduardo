@@ -46,8 +46,8 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.store.select(state => state).subscribe(state => console.log({ state })); 
-    this.store.select(selectStoreList).subscribe(songs => console.log(songs))
+    // this.store.select(state => state).subscribe(state => console.log({ state })); 
+    // this.store.select(selectStoreList).subscribe(songs => console.log(songs))
     this.songs$ = this.store.select(selectStoreList);
     this.store.dispatch(loadSong());
     //this.store.dispatch(addSongs({}));

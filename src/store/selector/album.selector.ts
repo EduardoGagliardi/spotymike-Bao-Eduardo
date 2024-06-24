@@ -18,8 +18,6 @@ export const selectSortAlbumStore = createSelector(
 export const selectTopAlbumStore = createSelector(
     selectAlbum, 
     (state: AlbumState) => {
-        // const res = [...state.albums].sort((a, b) => new Date(b.createdAt.seconds*1000).getTime() - new Date(a.createdAt.seconds*1000).getTime());
-        // res.forEach(album => console.log(new Date(album.createdAt.seconds*1000)))
         return [...state.albums].sort((a, b) => new Date(b.createdAt.seconds*1000).getTime() - new Date(a.createdAt.seconds*1000).getTime())[0]    
 
     }

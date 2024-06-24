@@ -1,5 +1,5 @@
 <div class="scrollable-row">
-  <ng-container *ngFor="let song of songs">
+  <ng-container *ngFor="let song of songs$ | async">
     <ion-col >
       <app-song-card [song]="song"></app-song-card>
     </ion-col>

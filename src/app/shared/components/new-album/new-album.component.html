@@ -1,5 +1,5 @@
 <ion-grid>
-  <ion-row class="new-album">
+  <ion-row class="new-album" *ngIf="newAlbum$ | async as album">
     <ion-col >
       <h2>New Album</h2>
       <p>{{album.categ}} Hits</p>
@@ -7,10 +7,7 @@
       <a href="javascript:void(0);" (click)="onAlbumPage()"><ion-icon id="see-new-album" name="book"></ion-icon></a>
 
     </ion-col>
-    <!-- <ion-col> 
-      <ion-img class="album-photo" src={{album.cover}}></ion-img>
-    </ion-col> -->
-    <ion-col *ngIf="newAlbum$ | async as album"> 
+    <ion-col > 
       <ion-img class="album-photo" [src]="album?.cover"></ion-img>
     </ion-col>
   </ion-row>

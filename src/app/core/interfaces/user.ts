@@ -40,12 +40,12 @@ interface ISongs{
     id: string,
 }
 
-export interface IFollower{
+ interface IFollower{
     id:string,
     fullname: string
 }
 
-export interface IPlayed{
+ interface IPlayed{
     id: string,
     name: string,
 }

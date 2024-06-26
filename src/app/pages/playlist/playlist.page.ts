@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonText } from '@ionic/angular/standalone';
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from 'src/app/core/services/firestore.service';
-import { IPlaylist } from 'src/app/core/interfaces/playlist';
 
 @Component({
   selector: 'app-playlist',

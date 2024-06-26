@@ -2,8 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { ArtistComponent } from '../artist/artist.component';
-import { FirestoreService } from 'src/app/core/services/firestore.service';
 import { IArtist } from 'src/app/core/interfaces/artist';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/store/app.state';
+import { selectArtistList } from 'src/store/selector/artist.selector';
+import { loadArtist } from 'src/store/action/artist.action';
 
 @Component({
   selector: 'app-list-artist',
@@ -13,17 +17,15 @@ import { IArtist } from 'src/app/core/interfaces/artist';
   imports: [IonicModule,CommonModule, ArtistComponent],
 })
 export class ListArtistComponent  implements OnInit {
-  artists : IArtist[];
-  private fireBaseService = inject(FirestoreService);
+  artists$ : Observable<IArtist[]> = new Observable<IArtist[]>();
+  store = inject(Store<AppState>);
 
   constructor() { 
-    this.artists = [];
   }
 
   ngOnInit() {
-    this.fireBaseService.getArtists().then(res => {
-      this.artists = res.map(artist => artist as IArtist).sort((a, b) => Number(b.follower) - Number(a.follower)).slice(0,9);
-  });
+    this.artists$ = this.store.select(selectArtistList);
+    this.store.dispatch(loadArtist());
   }
 
 }

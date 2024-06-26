@@ -42,7 +42,12 @@ export class FirestoreService {
     const users = userSnapshot.docs.map((doc) => doc.data());
     return users;
   }
-
+  getUsers() {
+    const userCol = collection(this.db, 'Users');
+    return from(getDocs(userCol).then((snapshot) => {
+      return snapshot.docs.map((doc) => doc.data() as IUser)
+    }));
+  }
   // Create a user
   async createUser(user: IUser) {
     const userDoc = doc(this.db, 'Users', user.id);
@@ -56,12 +61,14 @@ export class FirestoreService {
     const albumsList = albumsSnapshot.docs.map((doc) => doc.data());
     return albumsList;
   }
+
   getAllAlbums() {
     const albumCol = collection(this.db, 'albums');
     return from(getDocs(albumCol).then((snapshot) => {
       return snapshot.docs.map((doc) => doc.data() as IAlbum)
     }));
   }
+  
   async getAlbumsByDate() {
     const albumsCol = collection(this.db, 'albums');
     const q = query(albumsCol, orderBy('date', 'desc') , limit(1));
@@ -77,8 +84,8 @@ export class FirestoreService {
     return songList;
   }
 
-   getAllSongsA() {
-    //console.log("call get songs")
+   getAllSongsObservable() {
+    console.log("call get songs")
     const songCol = collection(this.db, 'songs');
     return from(getDocs(songCol).then((snapshot) => snapshot.docs.map((doc) => doc.data() as ISong)));
   }
@@ -91,11 +98,12 @@ export class FirestoreService {
     return songList;
   }
 
-  async getArtists() {
+  
+  getArtistsObservable() {
     const artistCol = collection(this.db, 'artists');
-    const artistsSnapshot = await getDocs(artistCol);
-    const artistList = artistsSnapshot.docs.map((doc) => doc.data());
-    return artistList;
+    return from(getDocs(artistCol).then((snapshot) => {
+      return snapshot.docs.map((doc) => doc.data() as IArtist)
+    }));
   }
 
   /**
@@ -135,14 +143,28 @@ export class FirestoreService {
     }
     return null;
   }
-  async getAlbums2() {
-    const albumsCol = collection(this.db, 'albums');
-    const q = query(albumsCol, where('artist.name', '==', 'Mike'), limit(3));
-    const albumsSnapshot = await getDocs(q);
-    const albumsList = albumsSnapshot.docs.map((doc) => doc.data());
-    //console.log(albumsList);
-    return albumsList;
+
+  getPlaylistsObservable() {
+    const playlistCol = collection(this.db, 'playlists');
+    return from(getDocs(playlistCol).then((snapshot) => {
+      return snapshot.docs.map((doc) => doc.data() as IPlaylist)
+    }));
   }
+
+  getPlaylistByIdObservable(id: string) {
+    const playlistCol = collection(this.db, 'playlists');
+    const q = query(playlistCol, where('id', '==', id), limit(1));
+    return from(getDocs(q).then((snapshot) => {
+      if (!snapshot.empty) {
+
+        const doc = snapshot.docs[0];
+        return doc.data() as IPlaylist;
+      }
+
+      return null;    
+    }));
+  }
+
 
   constructor() {}
 }

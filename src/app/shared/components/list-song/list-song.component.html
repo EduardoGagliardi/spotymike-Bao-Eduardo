@@ -1,5 +1,5 @@
 <div class="song-list">
-  <ng-container *ngFor="let song of songs">
+  <ng-container *ngFor="let song of songs$ | async">
     <app-song [song]="song"></app-song>
   </ng-container>
 </div>

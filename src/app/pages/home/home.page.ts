@@ -17,7 +17,7 @@ import { ISong } from "src/app/core/interfaces/song";
 import { loadSong } from "src/store/action/song.action";
 import { AppState } from "src/store/app.state";
 import { Store, select } from "@ngrx/store";
-import { selectStoreList } from "src/store/selector/song.selector";
+import { selectAllSongs } from "src/store/selector/song.selector";
 
 @Component({
   selector: "app-home-home",
@@ -46,9 +46,7 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    // this.store.select(state => state).subscribe(state => console.log({ state })); 
-    // this.store.select(selectStoreList).subscribe(songs => console.log(songs))
-    this.songs$ = this.store.select(selectStoreList);
+    this.songs$ = this.store.select(selectAllSongs);
     this.store.dispatch(loadSong());
     //this.store.dispatch(addSongs({}));
   }

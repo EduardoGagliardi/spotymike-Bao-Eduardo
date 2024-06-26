@@ -1,5 +1,5 @@
 <div class="album-favoris-list">
-  <ng-container *ngFor="let album of albums">
+  <ng-container *ngFor="let album of albums$ | async">
     <app-album-favoris [album]="album"></app-album-favoris>
   </ng-container>
 </div>

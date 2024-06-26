@@ -1,17 +1,16 @@
 import { inject } from '@angular/core';
-import { catchError, exhaustMap, map, of, tap } from 'rxjs';
+import { exhaustMap, map } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { FirestoreService } from 'src/app/core/services/firestore.service';
-import { GET_PRE_SONGS_TYPES, setSongs } from '../action/song.action';
-export const loadSongs = createEffect(
+import { GET_PRE_PLAYLIST_TYPES, setPlaylists } from '../action/playlist.action';
+export const loadPlaylist = createEffect(
   (actions$ = inject(Actions), fireStoreService = inject(FirestoreService)) => {
-    console.log('load Songs');
     return actions$.pipe(
-      ofType(GET_PRE_SONGS_TYPES.GET_SONG),
+      ofType(GET_PRE_PLAYLIST_TYPES.GET_PLAYLIST),
       exhaustMap(() =>
-        fireStoreService.getAllSongsObservable().pipe(
-          map((songs) => setSongs({ songs: songs })),
+        fireStoreService.getPlaylistsObservable().pipe(
+          map((playlists) => setPlaylists({ playlists: playlists })),
         )
       )
     );

@@ -1,5 +1,5 @@
 <div class="artist-list">
-  <ng-container *ngFor="let artist of artists">
+  <ng-container *ngFor="let artist of artists$ | async">
     <app-artist [artist]="artist"></app-artist>
   </ng-container>
 </div>

@@ -9,10 +9,13 @@ import { CommonModule } from "@angular/common";
 import { ListArtistComponent } from "src/app/shared/components/list-artist/list-artist.component";
 import { ListArtistFollowedComponent } from "src/app/shared/components/list-artist-followed/list-artist-followed.component";
 import { Router } from "@angular/router";
-import { AuthentificationService } from "src/app/core/services/authentification.service";
 import { IUser } from "src/app/core/interfaces/user";
-import { FirestoreService } from "src/app/core/services/firestore.service";
 import { IPlaylist } from "src/app/core/interfaces/playlist";
+import { Store } from "@ngrx/store";
+import { AppState } from "src/store/app.state";
+import { Observable } from "rxjs";
+import { selectCurrentUserStore } from "src/store/selector/user.selector";
+import { loadUsers } from "src/store/action/user.action";
 
 @Component({
   selector: "app-user-profile",
@@ -28,10 +31,11 @@ import { IPlaylist } from "src/app/core/interfaces/playlist";
   ],
 })
 export class UserProfilePage {
+  store = inject(Store<AppState>);
+  user$ : Observable<IUser> = new Observable<IUser>();
   private router = inject(Router);
   private modalCtl = inject(ModalController);
-  private serviceAuth = inject(AuthentificationService);
-  private fireBaseService = inject(FirestoreService);
+
 
   username: string = "";
   followers: number = 0;
@@ -43,17 +47,20 @@ export class UserProfilePage {
   }
 
   ngOnInit() {
-    const user = this.serviceAuth.currentUser as IUser;
-    this.username = user.firstname + " " + user.lastname;
-    this.followers = user.followers == null ? 0 : user.followers;
-    this.following = user.followed?.length == null ? 0 : user.followed.length;
+    //const user = this.serviceAuth.currentUser as IUser;
+    this.user$ = this.store.select(selectCurrentUserStore);
+    
+    this.store.dispatch(loadUsers());
+    // this.username = user.firstname + " " + user.lastname;
+    // this.followers = user.followers == null ? 0 : user.followers;
+    // this.following = user.followed?.length == null ? 0 : user.followed.length;
 
-     this.fireBaseService.getAllPlaylists().then((data) => {
-        this.playlists = data.map((playlist) => playlist as IPlaylist);
-        this.playlists = this.playlists.filter(
-          (song) => song.owner == user.id
-        );
-      })
+    //  this.fireBaseService.getAllPlaylists().then((data) => {
+    //     this.playlists = data.map((playlist) => playlist as IPlaylist);
+    //     this.playlists = this.playlists.filter(
+    //       (song) => song.owner == user.id
+    //     );
+    //   })
   }
   async onSettingModal() {
     const modal = await this.modalCtl.create({

@@ -17,18 +17,18 @@
         </ion-avatar>
       </ion-col>
     </ion-row>
-    <ion-row class="profile-name" justify-content-center>
+    <ion-row class="profile-name" justify-content-center  *ngIf="user$ | async as user">
       <ion-col size="auto">
-        <h2>{{ username }}</h2>
+        <h2>{{ user.firstname + " " + user.lastname }}</h2>
       </ion-col>
     </ion-row>
-    <ion-row class="profile-stats" justify-content-center>
+    <ion-row class="profile-stats" justify-content-center *ngIf="user$ | async as user">
       <ion-col size="auto" class="stat">
-        <ion-row>{{ followers }}</ion-row>
+        <ion-row>{{ user.followers == null ? 0 : user.followers }}</ion-row>
         <ion-row> Followers</ion-row> 
       </ion-col>
       <ion-col size="auto" class="stat">
-        <ion-row>{{ following }}</ion-row>
+        <ion-row>{{ user.followed?.length == null ? 0 : user.followed.length }}</ion-row>
         <ion-row> Following</ion-row> 
       </ion-col>
     </ion-row>

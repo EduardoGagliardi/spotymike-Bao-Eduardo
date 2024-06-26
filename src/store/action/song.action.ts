@@ -1,5 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { ISong } from 'src/app/core/interfaces/song';
 
 

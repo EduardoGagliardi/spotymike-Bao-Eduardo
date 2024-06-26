@@ -27,8 +27,11 @@ import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/passwo
 import { DocumentData } from 'firebase/firestore/lite';
 import { __values } from 'tslib';
 import { IUser } from 'src/app/core/interfaces/user';
-import { FirestoreService } from 'src/app/core/services/firestore.service';
 import { DbService } from 'src/app/core/services/db.service';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/store/app.state';
+import { Observable } from 'rxjs';
+import { loadUsers } from 'src/store/action/user.action';
 
 @Component({
   selector: 'app-login',
@@ -52,6 +55,9 @@ import { DbService } from 'src/app/core/services/db.service';
   ],
 })
 export class LoginPage implements OnInit {
+  store = inject(Store<AppState>);
+  users$ : Observable<IUser[]> = new Observable<IUser[]>();
+
   error = '';
   email =''
   submitForm = false;
@@ -60,7 +66,6 @@ export class LoginPage implements OnInit {
   private router = inject(Router);
   private modalCtl = inject(ModalController);
   private serviceAuth = inject(AuthentificationService);
-  private fireBaseService = inject(FirestoreService);
 
   form: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -77,6 +82,8 @@ export class LoginPage implements OnInit {
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {
+    this.store.dispatch(loadUsers());
+
     this.db.getUsers().then((data: IUser[]) => {
       if (data && data.length > 0) {
         this.userList = data;

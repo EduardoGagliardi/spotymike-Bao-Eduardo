@@ -4,9 +4,14 @@ import { IonicModule } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { options } from "ionicons/icons";
 import { SongComponent } from '../song/song.component';
-import { FirestoreService } from 'src/app/core/services/firestore.service';
 import { ISong } from 'src/app/core/interfaces/song';
 import { AuthentificationService } from 'src/app/core/services/authentification.service';
+import { IUser } from 'src/app/core/interfaces/user';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/store/app.state';
+import { Observable } from 'rxjs';
+import { selectCurrentUserStore, selectUserStoreList } from 'src/store/selector/user.selector';
+import { selectSong, selectAllSongs, selectLastPlayed } from 'src/store/selector/song.selector';
 
 
 @Component({
@@ -17,8 +22,10 @@ import { AuthentificationService } from 'src/app/core/services/authentification.
   imports: [IonicModule,CommonModule,SongComponent]
 })
 export class ListSongComponent  implements OnInit {
+  store = inject(Store<AppState>);
+  user$ : Observable<IUser> = new Observable<IUser>();
+  songs$ : Observable<ISong[]> = new Observable<ISong[]>();
   private serviceAuth = inject(AuthentificationService);
-  private fireBaseService = inject(FirestoreService);
   songs: ISong[];
   constructor() { 
     this.songs = []
@@ -26,14 +33,8 @@ export class ListSongComponent  implements OnInit {
   }
 
   ngOnInit() {
-    const playedList = this.serviceAuth.currentUser.lastPlayed ?? [];
-    this.fireBaseService.getAllSongs().then(res => {
-      this.songs = res.map(song => song as ISong);
-      this.songs = this.songs.filter(
-        (song) => playedList.filter(elm => elm.id === song.id)
-      );
-    });
-    
+    this.songs$ = this.store.select(selectLastPlayed);
+    this.songs$.subscribe(songs => console.log(songs))
   }
 
-}
+} 

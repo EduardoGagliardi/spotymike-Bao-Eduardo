@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.translate.use('fr_FR');
     this.translate.setDefaultLang('fr_FR');
-    console.log('load user')
     this.store.dispatch(loadUsers())
     this.store.dispatch(loadSong())
     this.store.dispatch(loadAlbum())

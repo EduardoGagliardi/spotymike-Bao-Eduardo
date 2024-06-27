@@ -49,7 +49,7 @@
   </ion-grid>
   <div class="scrolling-wrapper">
     <div class="scrollable-row">
-      <ng-container *ngFor="let playlist of playlists">
+      <ng-container *ngFor="let playlist of playlists$ | async">
         <ion-col >
           <app-playlist-profil [playlist]="playlist"></app-playlist-profil>
         </ion-col>

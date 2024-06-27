@@ -42,31 +42,36 @@ export const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: 'auth/login',
-   // redirectTo: 'home',
   },
   {
     path: 'song-player',
-    loadComponent: () => import('./pages/song-player/song-player.page').then( m => m.SongPlayerPage)
+    loadComponent: () => import('./pages/song-player/song-player.page').then( m => m.SongPlayerPage),
+    canActivate: [authGuard],
   },
   {
     path: 'playlist/:id',
     loadComponent: () => import('./pages/playlist/playlist.page').then( m => m.PlaylistPage),
+    canActivate: [authGuard],
   },
   {
     path: 'artist-profil',
-    loadComponent: () => import('./pages/artist-profil/artist-profil.page').then( m => m.ArtistProfilPage)
+    loadComponent: () => import('./pages/artist-profil/artist-profil.page').then( m => m.ArtistProfilPage),
+    canActivate: [authGuard],
   },
   {
     path: 'list-artist',
-    loadComponent: () => import('./pages/list-artist/list-artist.page').then( m => m.ListArtistPage)
+    loadComponent: () => import('./pages/list-artist/list-artist.page').then( m => m.ListArtistPage),
+    canActivate: [authGuard],
   },
   {
     path: 'album',
-    loadComponent: () => import('./pages/album/album.page').then( m => m.AlbumPage)
+    loadComponent: () => import('./pages/album/album.page').then( m => m.AlbumPage),
+    canActivate: [authGuard],
   },
   {
     path: 'edit-profil',
-    loadComponent: () => import('./pages/edit-profil/edit-profil.page').then( m => m.EditProfilPage)
+    loadComponent: () => import('./pages/edit-profil/edit-profil.page').then( m => m.EditProfilPage),
+    canActivate: [authGuard],
   },
 
 

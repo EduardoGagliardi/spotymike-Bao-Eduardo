@@ -59,6 +59,10 @@ export const userReducer = createReducer(
       users: listUser.users,
     }}),
     on(ActionsUser.setCurrentUser, (state, user: any) => {
+      const filterList = state.users.filter((elm : IUser) => elm.id == user.id);
+      if (filterList.length > 0) {
+        user = filterList[0];
+      }
         return {
         ...state,
         currentUser: user,

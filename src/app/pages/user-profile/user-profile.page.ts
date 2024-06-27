@@ -15,7 +15,7 @@ import { Store } from "@ngrx/store";
 import { AppState } from "src/store/app.state";
 import { Observable } from "rxjs";
 import { selectCurrentUserStore } from "src/store/selector/user.selector";
-import { loadUsers } from "src/store/action/user.action";
+import { selectMyPlaylist } from "src/store/selector/playlist.selector";
 
 @Component({
   selector: "app-user-profile",
@@ -33,13 +33,9 @@ import { loadUsers } from "src/store/action/user.action";
 export class UserProfilePage {
   store = inject(Store<AppState>);
   user$ : Observable<IUser> = new Observable<IUser>();
+  playlists$ : Observable<IPlaylist[]> = new Observable<IPlaylist[]>();
   private router = inject(Router);
   private modalCtl = inject(ModalController);
-
-
-  username: string = "";
-  followers: number = 0;
-  following: number = 0;
 
   playlists: IPlaylist[] = [];
   constructor() {
@@ -49,8 +45,7 @@ export class UserProfilePage {
   ngOnInit() {
     //const user = this.serviceAuth.currentUser as IUser;
     this.user$ = this.store.select(selectCurrentUserStore);
-    
-    this.store.dispatch(loadUsers());
+    this.playlists$ = this.store.select(selectMyPlaylist)
     // this.username = user.firstname + " " + user.lastname;
     // this.followers = user.followers == null ? 0 : user.followers;
     // this.following = user.followed?.length == null ? 0 : user.followed.length;

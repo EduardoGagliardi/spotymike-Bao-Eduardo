@@ -18,6 +18,8 @@ import { loadSong } from "src/store/action/song.action";
 import { AppState } from "src/store/app.state";
 import { Store, select } from "@ngrx/store";
 import { selectAllSongs } from "src/store/selector/song.selector";
+import { IUser } from "src/app/core/interfaces/user";
+import { loadUsers } from "src/store/action/user.action";
 
 @Component({
   selector: "app-home-home",
@@ -38,6 +40,7 @@ import { selectAllSongs } from "src/store/selector/song.selector";
 export class HomePage implements OnInit {
   store = inject(Store<AppState>);
   songs$ : Observable<ISong[]> = new Observable<ISong[]>();
+  user$ : Observable<IUser[]> = new Observable<IUser[]>();
   private router = inject(Router);
   private modalCtl = inject(ModalController);
   showSearchInput = false;

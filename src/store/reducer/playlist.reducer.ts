@@ -37,7 +37,7 @@ export const PlaylistReducer = createReducer(
     on(ActionPlaylists.loadedPlaylists, (state) => ({...state, load: false})),
     on(ActionPlaylists.loadPlaylist, (state) => {
       // does not need define this event handler
-      console.log('load Playlist')
+      //console.log('load Playlist')
       return {...state};
     }),
     on(ActionPlaylists.setPlaylists, (state, listPlaylist: any) => {

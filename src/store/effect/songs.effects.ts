@@ -6,7 +6,6 @@ import { FirestoreService } from 'src/app/core/services/firestore.service';
 import { GET_PRE_SONGS_TYPES, setSongs } from '../action/song.action';
 export const loadSongs = createEffect(
   (actions$ = inject(Actions), fireStoreService = inject(FirestoreService)) => {
-    console.log('load Songs');
     return actions$.pipe(
       ofType(GET_PRE_SONGS_TYPES.GET_SONG),
       exhaustMap(() =>

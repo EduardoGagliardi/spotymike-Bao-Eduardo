@@ -58,8 +58,9 @@ export const userReducer = createReducer(
       currentUser: user,
       users: listUser.users,
     }}),
-    on(ActionsUser.setCurrentUser, (state, user: any) => {
-      const filterList = state.users.filter((elm : IUser) => elm.id == user.id);
+    on(ActionsUser.setCurrentUser, (state, payload: any) => {
+      const filterList = state.users.filter((elm : IUser) => elm.id == payload.user.id);
+      let user = {} as IUser;
       if (filterList.length > 0) {
         user = filterList[0];
       }

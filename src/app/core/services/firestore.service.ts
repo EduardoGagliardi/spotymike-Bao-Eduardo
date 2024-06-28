@@ -85,7 +85,7 @@ export class FirestoreService {
   }
 
    getAllSongsObservable() {
-    console.log("call get songs")
+    //console.log("call get songs")
     const songCol = collection(this.db, 'songs');
     return from(getDocs(songCol).then((snapshot) => snapshot.docs.map((doc) => doc.data() as ISong)));
   }

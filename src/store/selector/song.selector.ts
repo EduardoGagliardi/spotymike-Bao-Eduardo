@@ -27,14 +27,19 @@ export const selectLastPlayed = createSelector(
     selectUser,
     (state: SongState, users: UserState) => {
         const currentUser = users.currentUser;
-        
         // Check if currentUser and currentUser.lastPlayed are defined
         if (!currentUser || !currentUser.lastPlayed) {
           return [];
         }
-        console.log(currentUser.lastPlayed)
+        
+        //console.log(currentUser.lastPlayed)
         return state.songs.filter((song: ISong) => {
             return users.currentUser.lastPlayed.filter(elm =>elm.id === song.id).length > 0;
         })
     }
 );
+
+export const selectSongByIdStore = (id: string) => createSelector(
+    selectSong,
+    (state: SongState) => state.songs.find((song: ISong) => song.id === id) || null
+  );

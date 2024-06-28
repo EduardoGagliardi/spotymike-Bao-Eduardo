@@ -7,7 +7,7 @@ import { FirestoreService } from "./firestore.service";
 import { IUser } from "../interfaces/user";
 import { Store } from "@ngrx/store";
 import { AppState } from "src/store/app.state";
-import { selectUserStoreList } from "src/store/selector/user.selector";
+import { selectCurrentUserStore, selectUserStoreList } from "src/store/selector/user.selector";
 import { setCurrentUser } from "src/store/action/user.action";
 
 @Injectable({
@@ -16,6 +16,7 @@ import { setCurrentUser } from "src/store/action/user.action";
 export class AuthentificationService {
   store = inject(Store<AppState>);
   users$ : Observable<IUser[]> = new Observable<IUser[]>();
+  userStore$: Observable<IUser> = new Observable<IUser>();
   private currentUserSubject = new BehaviorSubject<IUser | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
   currentUser: IUser | null = null;
@@ -37,7 +38,6 @@ export class AuthentificationService {
     return this.users$.pipe(
       switchMap(users => {
         const user = users.find(user => user.email === email && user.password === password);
-
         if (user) {
           this.isAuth = true;
           this.store.dispatch(setCurrentUser({ user })); // Update current user in the store

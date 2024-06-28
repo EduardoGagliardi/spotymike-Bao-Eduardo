@@ -12,7 +12,7 @@ export class DbService {
     const userCollection = collection(db, "Users");
     const userSnapshot = await getDocs(userCollection);
     const userList = await userSnapshot.docs.map(doc => doc.data());
-    console.log(userList)
+    //console.log(userList)
     return userList  as IUser[];
   }
 

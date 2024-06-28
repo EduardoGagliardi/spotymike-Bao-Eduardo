@@ -44,7 +44,7 @@ export const routes: Routes = [
     redirectTo: 'auth/login',
   },
   {
-    path: 'song-player',
+    path: 'song-player/:id',
     loadComponent: () => import('./pages/song-player/song-player.page').then( m => m.SongPlayerPage),
     canActivate: [authGuard],
   },

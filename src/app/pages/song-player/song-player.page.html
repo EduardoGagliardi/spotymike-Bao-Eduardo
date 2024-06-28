@@ -1,22 +1,26 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true"  *ngIf="song$ | async as song">
   <ion-header>
     <ion-toolbar>
-      <ion-buttons slot="start">
+      <ion-buttons slot="start"  (click)="goBack()">
         <img src="assets/icon/Arrow-back.png" alt="Back arrow" class="Arrowback">
       </ion-buttons>
-      <ion-title size="large" class="center">this is elon musk</ion-title>
+      <ion-title class="">{{song.title}}</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="songplayer" class="center SongImageconteiner">
-    <img class="SongImage" src="assets/avatar/album-photo.jpg">
+    <img class="SongImage" src={{song.cover}}>
   </div>
+
   <div id="info" class="pad-10">
-    <h1 style="font-weight: bold;">Elon Musk</h1>
-    <p>this is elon musk</p>
+    <h1 style="font-weight: bold;">{{ song.title }}</h1>
+    <div *ngFor="let artist of song.artists">
+      <p>{{ artist.fullname }}</p>
+    </div>
     <ion-icon name="heart-outline" class="icon"></ion-icon>
     <ion-icon name="heart-dislike-outline" class="icon"></ion-icon>
   </div>
+
   <div>
     <app-song-player-bar></app-song-player-bar>
   </div>

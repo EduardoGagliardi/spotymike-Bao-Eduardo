@@ -34,7 +34,6 @@ export class ListSongComponent  implements OnInit {
 
   ngOnInit() {
     this.songs$ = this.store.select(selectLastPlayed);
-    this.songs$.subscribe(songs => console.log(songs))
   }
 
 } 

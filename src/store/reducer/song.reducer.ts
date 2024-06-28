@@ -34,7 +34,7 @@ export const songReducer = createReducer(
     on(ActionSongs.loadedSongs, (state) => ({...state, load: false})),
     on(ActionSongs.loadSong, (state) => {
       // does not need define this event handler
-      console.log('load song')
+      //console.log('load song')
       return {...state};
     }),
     on(ActionSongs.addSongs, (state, listSong: any) => ({
@@ -42,7 +42,7 @@ export const songReducer = createReducer(
         songs: [...state.songs, listSong.songs],
       })),
     on(ActionSongs.setSongs, (state, listSong: any) => {
-      console.log(listSong)
+      //console.log(listSong)
       return {
       ...state,
       songs: listSong.songs,

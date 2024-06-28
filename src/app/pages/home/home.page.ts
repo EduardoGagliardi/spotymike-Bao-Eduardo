@@ -20,6 +20,7 @@ import { Store, select } from "@ngrx/store";
 import { selectAllSongs } from "src/store/selector/song.selector";
 import { IUser } from "src/app/core/interfaces/user";
 import { loadUsers } from "src/store/action/user.action";
+import { loadPlaylist } from "src/store/action/playlist.action";
 
 @Component({
   selector: "app-home-home",
@@ -50,7 +51,11 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.songs$ = this.store.select(selectAllSongs);
-    this.store.dispatch(loadSong());
+    this.store.dispatch(loadUsers());
+    this.user$.subscribe(data => {
+      this.store.dispatch(loadSong())
+    })
+    this.store.dispatch(loadPlaylist())
     //this.store.dispatch(addSongs({}));
   }
   

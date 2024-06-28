@@ -39,7 +39,7 @@ export class AuthPage implements OnInit {
 
   ngOnInit() {
     this.router.data.subscribe((component) => {
-      console.log(component);
+      //console.log(component);
     });
   }
 }

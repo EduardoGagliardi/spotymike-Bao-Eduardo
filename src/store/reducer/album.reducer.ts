@@ -34,7 +34,6 @@ export const albumReducer = createReducer(
     on(ActionAlbums.loadedAlbums, (state) => ({...state, load: false})),
     on(ActionAlbums.loadAlbum, (state) => {
       // does not need define this event handler
-      console.log('load album')
       return {...state};
     }),
     on(ActionAlbums.addAlbums, (state, listAlbum: any) => ({

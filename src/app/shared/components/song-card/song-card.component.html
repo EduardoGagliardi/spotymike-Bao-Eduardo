@@ -1,4 +1,4 @@
-<ion-card class="song-card" (click)="onClickGetSongPlayer()">
+<ion-card class="song-card" (click)="onClickGetSongPlayer(song.id)">
   <ion-img class="song-image" [src]="song.cover"></ion-img>
   <ion-card-header>
     <ion-card-title class="song-artist">{{ song.artists[0].fullname }}</ion-card-title>

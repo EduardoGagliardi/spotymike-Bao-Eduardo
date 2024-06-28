@@ -16,7 +16,7 @@ export class SongComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {}
-  onClickGetSongPlayer() {
-    this.router.navigate(['/song-player']);
+  onClickGetSongPlayer(id: string) {
+    this.router.navigate(['/song-player', id]);
   }
 }

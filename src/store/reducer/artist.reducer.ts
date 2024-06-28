@@ -35,7 +35,7 @@ export const ArtistReducer = createReducer(
     on(ActionArtists.loadedArtists, (state) => ({...state, load: false})),
     on(ActionArtists.loadArtist, (state) => {
       // does not need define this event handler
-      console.log('load Artist')
+     // console.log('load Artist')
       return {...state};
     }),
     on(ActionArtists.setArtists, (state, listArtist: any) => {

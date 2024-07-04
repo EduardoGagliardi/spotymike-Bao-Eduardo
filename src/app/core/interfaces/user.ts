@@ -20,7 +20,7 @@ export interface IUser{
     updatedAt: Date,
     password: string,
     active: number,
-    followers: number,
+    follower: number,
     lastPlayed: IPlayed[],
     songs: ISongs[],
     albums: IAlbumId[],

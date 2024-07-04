@@ -1,61 +1,55 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <ion-list class="bg-transparent">
-    <!-- Introduction text and toggle button -->
-    <ion-item>
-      <ion-label>Do you want to create an artist account?</ion-label>
-      <ion-toggle ngDefaultControl  formControlName="createArtistAccount" [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>
-    </ion-item>
-
-    <ion-item>
-      <ion-input type="text" formControlName="firstName" name="firstName" label="First Name" labelPlacement="floating"
+       <ion-item>
+      <ion-input type="text" formControlName="firstName" name="firstName" label="First Name*" labelPlacement="floating"
         placeholder="John"></ion-input>
     </ion-item>
     @if(form.get('firstName')?.invalid && (form.get('firstName')?.dirty || form.get('firstName')?.touched)){
       <div>
         @if(form.get('firstName')?.errors?.['required'] ){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>*FirstName require</p>
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>FirstName require</p>
         }
         @else if(form.get('firstName')?.errors?.['minlength'] || form.get('firstName')?.errors?.['maxlength'] ){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>*FirstName invalid</p>
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>FirstName invalid</p>
         }
       </div>
       }
     <ion-item>
-      <ion-input type="text" formControlName="lastName" name="lastName" label="Last Name" labelPlacement="floating"
+      <ion-input type="text" formControlName="lastName" name="lastName" label="Last Name*" labelPlacement="floating"
         placeholder="Doe"></ion-input>
     </ion-item>
     @if(form.get('lastName')?.invalid && (form.get('lastName')?.dirty || form.get('lastName')?.touched)){
       <div>
         @if(form.get('lastName')?.errors?.['required'] ){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>*LastName require</p>
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>LastName require</p>
         }
         @else if(form.get('lastName')?.errors?.['minlength'] || form.get('lastName')?.errors?.['maxlength'] ){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>*LastName invalid</p>
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>LastName invalid</p>
         }
       </div>
       }
     <ion-item>
-      <ion-input type="email" formControlName="email" name="email" label="Email" labelPlacement="floating"
+      <ion-input type="email" formControlName="email" name="email" label="Email*" labelPlacement="floating"
         placeholder="john@example.com"></ion-input>
     </ion-item>
     @if(form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)){
       <div>
         @if(form.get('email')?.errors?.['required'] ){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>*Email require</p>
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>Email require</p>
         }
         @else if(form.get('email')?.errors?.['pattern'] ){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>*Email invalid</p>
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>Email invalid</p>
         }
       </div>
       }
     <ion-item>
-      <ion-input type="date" formControlName="birthdate" name="birthdate" label="Date of Birth" labelPlacement="floating"
+      <ion-input type="date" formControlName="birthdate" name="birthdate" label="Date of Birth*" labelPlacement="floating"
         placeholder="MM/DD/YYYY"></ion-input>
     </ion-item>
     @if(form.get('birthdate')?.invalid && (form.get('birthdate')?.dirty || form.get('birthdate')?.touched)){
       <div>
         @if(form.get('birthdate')?.errors?.['required'] ){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>*Date of birth require</p>
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>Date of birth require</p>
         }
       </div>
       }
@@ -74,28 +68,33 @@
     </ion-item>
 
     <ion-item>
-      <ion-input type="number" formControlName="phone" name="phone" label="Phone" labelPlacement="floating"
+      <ion-input type="number" formControlName="phone" name="phone" label="Phone*" labelPlacement="floating"
         placeholder="0123456789"></ion-input>
     </ion-item>
     @if(form.get('phone')?.invalid && (form.get('phone')?.dirty || form.get('phone')?.touched)){
       <div>
         @if(form.get('phone')?.errors?.['minlength'] ){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>Size password invalid</p>
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>Size phone number invalid</p>
         }
         @else{
-          <p class="error"><ion-icon name="alert-outline"></ion-icon>Format password invalid</p>
+          <p class="error"><ion-icon name="alert-outline"></ion-icon>Format phone number invalid</p>
         }
       </div>
       }
-    <ion-item ngDefaultControl  *ngIf="isToggled">
-      <ion-label>Upload Avatar</ion-label>
-      <input type="file" formControlName="avatar">
-    </ion-item>
-    
+     
     <ion-item>
-      <ion-input type="password" formControlName="password" name="password" label="Password" labelPlacement="floating"
+      <ion-input type="password" formControlName="password" name="password" label="Password*" labelPlacement="floating"
         placeholder="••••••••••••••"></ion-input>
     </ion-item>
+    <!-- Introduction text and toggle button -->
+    <div class="toggle">
+      <ion-label>Do you want to create an artist account? </ion-label>
+      <ion-toggle ngDefaultControl  formControlName="createArtistAccount" [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>
+    </div>
+    <!-- <ion-item ngDefaultControl  *ngIf="isToggled">
+      <ion-label>Upload Avatar</ion-label>
+      <input type="file" formControlName="avatar">
+    </ion-item> -->
   </ion-list>
   @if(form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)){
     <div>

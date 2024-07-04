@@ -1,0 +1,18 @@
+.song-card {
+    width:150px;
+    .song-image{
+        width:150px;
+        height:150px;
+    }
+    .song-title{
+        --font-size: 10px;
+    }
+    .song-artist{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        display: block;
+        font-size: 1em;
+    }
+}

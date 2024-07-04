@@ -11,7 +11,7 @@ export interface PlaylistState extends EntityState<IPlaylist> {
 
 export function selectPlaylistId(a: IPlaylist): string {
     //In this case this would be optional since primary key is id
-    return a._id;
+    return a.id;
   }
   
   export function sortByTitle(a: IPlaylist, b: IPlaylist): number {

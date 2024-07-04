@@ -44,11 +44,12 @@ export const userReducer = createReducer(
         songs: [...state.users, listUser.users],
       })),
     on(ActionsUser.setUsers, (state, listUser: any) => {
-      const elm = localStorage.getItem('user');
+      const elm = localStorage.getItem('jwt');
       let user = {} as IUser;
       if (elm) {
-        const userJson = JSON.parse(elm);
-        const filterList = listUser.users.filter((elm : IUser) => elm.id == userJson.id);
+        const jwt = parseJwt(elm);
+       //const userJson = JSON.parse(elm);
+        const filterList = listUser.users.filter((elm : IUser) => elm.id == jwt.id);
         if (filterList.length > 0) {
           user = filterList[0];
         }
@@ -59,17 +60,32 @@ export const userReducer = createReducer(
       users: listUser.users,
     }}),
     on(ActionsUser.setCurrentUser, (state, payload: any) => {
-      const filterList = state.users.filter((elm : IUser) => elm.id == payload.user.id);
+      if (!payload.user){
+        return {
+          ...state,
+          currentUser: payload.user,
+        }
+      }
+      const filterList = state.users.filter((elm : IUser) => elm.id === payload.user.id);
       let user = {} as IUser;
       if (filterList.length > 0) {
         user = filterList[0];
       }
-        return {
+      return {
         ...state,
         currentUser: user,
-      }}),
+      }
+    }),
     );
 
+  export function parseJwt(token:string) {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(jsonPayload);
+    }
 
 // recupération
 export const { selectAll } = adaptater.getSelectors();

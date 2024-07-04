@@ -44,11 +44,11 @@ progress = 0;
     if (this.playing) {
       this.playing = false
       this.audio.pause();
-      console.log(this.playing);
+      //console.log(this.playing);
     } else {
       this.playing = true
       this.audio.play();
-      console.log(this.playing);
+      //console.log(this.playing);
       
     }
   }

@@ -4,10 +4,9 @@ import { settings } from "ionicons/icons";
 import { IonicModule, ModalController } from "@ionic/angular";
 import { SettingComponent } from "src/app/shared/modal/setting/setting.component";
 import { SongListComponent } from "src/app/shared/modal/song-list/song-list.component";
-import { PlaylistProfilComponent } from "src/app/shared/components/playlist-profil/playlist-profil.component";
 import { CommonModule } from "@angular/common";
-import { ListArtistComponent } from "src/app/shared/components/list-artist/list-artist.component";
-import { ListArtistFollowedComponent } from "src/app/shared/components/list-artist-followed/list-artist-followed.component";
+import { ListArtistComponent } from "src/app/shared/components/artists-components/list-artist/list-artist.component";
+import { ListArtistFollowedComponent } from "src/app/shared/components/artists-components/list-artist-followed/list-artist-followed.component";
 import { Router } from "@angular/router";
 import { IUser } from "src/app/core/interfaces/user";
 import { IPlaylist } from "src/app/core/interfaces/playlist";
@@ -16,6 +15,7 @@ import { AppState } from "src/store/app.state";
 import { Observable } from "rxjs";
 import { selectCurrentUserStore } from "src/store/selector/user.selector";
 import { selectMyPlaylist } from "src/store/selector/playlist.selector";
+import { PlaylistProfilComponent } from "src/app/shared/components/playlists-components/playlist-profil/playlist-profil.component";
 
 @Component({
   selector: "app-user-profile",
@@ -43,9 +43,10 @@ export class UserProfilePage {
   }
 
   ngOnInit() {
+    console.log("profile")
     //const user = this.serviceAuth.currentUser as IUser;
     this.user$ = this.store.select(selectCurrentUserStore);
-    this.playlists$ = this.store.select(selectMyPlaylist)
+    this.playlists$ = this.store.select(selectMyPlaylist);
     // this.username = user.firstname + " " + user.lastname;
     // this.followers = user.followers == null ? 0 : user.followers;
     // this.following = user.followed?.length == null ? 0 : user.followed.length;

@@ -20,18 +20,16 @@ import {
 } from '@ionic/angular/standalone';
 import { AuthentificationService } from 'src/app/core/services/authentification.service';
 import { TranslateModule } from '@ngx-translate/core';
-import { LoginRequestError, LoginRequestSucess } from 'src/app/core/interfaces/login';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { PasswordLostComponent } from 'src/app/shared/modal/password-lost/password-lost.component';
-import { DocumentData } from 'firebase/firestore/lite';
 import { __values } from 'tslib';
 import { IUser } from 'src/app/core/interfaces/user';
-import { DbService } from 'src/app/core/services/db.service';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/store/app.state';
-import { Observable } from 'rxjs';
+import {Observable } from 'rxjs';
 import { loadUsers } from 'src/store/action/user.action';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -61,8 +59,8 @@ export class LoginPage implements OnInit {
   error = '';
   email =''
   submitForm = false;
+  subscription: any = null;
   userList: IUser[] = [];
-  private db = inject(DbService);
   private router = inject(Router);
   private modalCtl = inject(ModalController);
   private serviceAuth = inject(AuthentificationService);
@@ -70,47 +68,93 @@ export class LoginPage implements OnInit {
   form: FormGroup = new FormGroup({
     email: new FormControl('', [
       Validators.required,
-      Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$'),
+      Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'),
     ]),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
     ]),
   });
-  constructor() {
+  constructor( private alertController: AlertController) {
    }
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {
     this.store.dispatch(loadUsers());
 
-    this.db.getUsers().then((data: IUser[]) => {
-      if (data && data.length > 0) {
-        this.userList = data;
-        const user = this.userList[0];
-        if (user && user.email) {
-          this.email = user.email;
-        }
-      }
-    })
+    if(localStorage.getItem('jwt')){
+      this.router.navigateByUrl('/home/home');
+    }
   }
 
-  async onSubmit() {
+  generateJwt(email: string, id: string) {
+    const HMACSHA256 = (key: string , message: string) => CryptoJS.HmacSHA256(message, key).toString(CryptoJS.enc.Hex);
+
+    // The header typically consists of two parts: 
+    // the type of the token, which is JWT, and the signing algorithm being used, 
+    // such as HMAC SHA256 or RSA.
+    const header = {
+      "alg": "HS256",
+      "typ": "JWT"
+    }
+    const encodedHeaders = btoa(JSON.stringify(header))
+
+
+    // The second part of the token is the payload, which contains the claims.
+    // Claims are statements about an entity (typically, the user) and 
+    // additional data. There are three types of claims: 
+    // registered, public, and private claims.
+    const claims = {
+        "email": email,
+        "id": id
+    }
+
+    const encodedPlayload = btoa(JSON.stringify(claims))
+
+    // create the signature part you have to take the encoded header, 
+    // the encoded payload, a secret, the algorithm specified in the header, 
+    // and sign that.
+    const signature = HMACSHA256( "spotymike-bhn", `${encodedHeaders}.${encodedPlayload}`)
+    const encodedSignature = btoa(signature)
+
+    const jwt = `${encodedHeaders}.${encodedPlayload}.${encodedSignature}`
+    return jwt;
+  }
+
+  onSubmit() {
     this.error = '';
+    
     if (this.form.valid) {
       this.submitForm = true;
-      (await this.serviceAuth
-        .login(this.form.value.email, this.form.value.password))
-        .subscribe((data: any | LoginRequestError) => {
-          if (data.error) {
-            this.error = data.message;
+      this.subscription = this.serviceAuth
+        .login(this.form.value.email, this.form.value.password)
+        .subscribe(async (data: any) => {
+          console.log(data);
+          if (localStorage.getItem('jwt')) {
+            this.router.navigateByUrl('/home/home');
+          }
+
+          if (Object.keys(data).length === 0) {
+            const alert = await this.alertController.create({
+              header: 'Login refused',
+              message: 'Password or email invalid',
+              buttons: ['OK']
+            });
+            await alert.present();
+            return;
           } else {
             // Add LocalStorage User
-            localStorage.setItem('user', JSON.stringify({email: data.email, id: data.id_artist}));
+            localStorage.setItem('jwt', this.generateJwt(data.email, data.id));
+            //console.log(this.parseJwt(this.generateJwt(data.email, data.id)));
+            //localStorage.setItem('user', JSON.stringify({email: data.email, id: data.id}));
             this.router.navigateByUrl('/home/home');
           }
         });
     }
+  }
+
+  ngOnDestroy() {
+    this.subscription?.unsubscribe();
   }
 
   async onPasswordLostModal() {

@@ -1,13 +1,13 @@
-<ion-row class="artist-item" (click)="onClickGetArtistProfil(artist.id)">
-  <ion-col size="auto" class="artist-number">
+<ion-row class="artist-item">
+  <ion-col size="auto" class="artist-number"  (click)="onClickGetArtistProfil(artist.id)">
     <img class="artist-image" [src]="artist.avatar" alt="artist Image">
   </ion-col>
-  <ion-col class="artist-details">
+  <ion-col class="artist-details"  (click)="onClickGetArtistProfil(artist.id)">
     <ion-row class="artist-title">{{ artist.fullname }}</ion-row >
     <ion-row  class="number-album">{{ artist.albums.length }} Albums</ion-row >
     <ion-row  class="artist-artist">{{ artist.follower }} Followers</ion-row >
   </ion-col>
   <ion-col size="auto" class="artist-options">
-    <a href=""><ion-icon id="see-new-album" name="options"></ion-icon></a>
+    <a href="javascript:void(0);" (click)="onSettingModal()"><ion-icon id="see-new-album" name="options"></ion-icon></a>
   </ion-col>
 </ion-row>

@@ -2,13 +2,15 @@ import { CommonModule, Location } from "@angular/common";
 import { Component, Input, OnInit, inject } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { IonContent, IonTitle, IonButtons, IonButton, IonToolbar, IonHeader, IonRange, IonIcon } from "@ionic/angular/standalone";
-import { SongPlayerBarComponent } from "../song-player-bar/song-player-bar.component";
 import { AppState } from "src/store/app.state";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { ISong } from "src/app/core/interfaces/song";
 import { selectSongByIdStore } from "src/store/selector/song.selector";
 import { ActivatedRoute, Router } from "@angular/router";
+import { addIcons } from "ionicons";
+import { book, heartCircle, heartDislike } from "ionicons/icons";
+import { SongPlayerBarComponent } from "src/app/shared/components/songs-components/song-player-bar/song-player-bar.component";
 
 @Component({
   selector: 'app-song-player',
@@ -38,7 +40,9 @@ export class SongPlayerPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     //private location: Location
-    ) { }
+    ) { 
+      addIcons({heartCircle, heartDislike });
+    }
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {

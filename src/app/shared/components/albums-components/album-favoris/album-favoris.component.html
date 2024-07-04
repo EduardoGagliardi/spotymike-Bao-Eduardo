@@ -1,0 +1,12 @@
+<ion-row class="song-item" >
+  <ion-col size="auto" class="song-number" (click)="onClickGetAlbum()">
+    <img class="song-image" [src]="album.cover" alt="Song Image">
+  </ion-col>
+  <ion-col class="song-details" (click)="onClickGetAlbum()">
+    <div class="song-title">{{ album.nom }}</div>
+  </ion-col>
+
+  <ion-col size="auto" class="song-options">
+    <a href="javascript:void(0);" (click)="onSettingModal()"><ion-icon id="see-new-album" name="options"></ion-icon></a>
+  </ion-col>
+</ion-row>

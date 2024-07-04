@@ -7,7 +7,7 @@ import { loadUsers } from 'src/store/action/user.action';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const store = inject(Store<AppState>);
-  const token = localStorage.getItem('user');
+  const token = localStorage.getItem('jwt');
   if (!token) {
     return inject(Router).navigate(['/auth/login']);
   }else{

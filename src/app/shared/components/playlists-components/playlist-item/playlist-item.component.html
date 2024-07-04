@@ -1,0 +1,12 @@
+<ion-row class="playlist-item" >
+  <ion-col size="auto" class="playlist-number" (click)="onClickGetPlaylist(playlist.id)">
+    <img class="playlist-image" [src]="playlist.cover" alt="Song Image">
+  </ion-col>
+  <ion-col class="playlist-details" (click)="onClickGetPlaylist(playlist.id)">
+    <div class="playlist-title">{{ playlist.title }}</div>
+    <div class="playlist-artist">{{ playlist.songs.length }} Songs</div>
+  </ion-col>
+  <ion-col size="auto" class="playlist-options">
+    <a href="javascript:void(0);" (click)="onOptionModal()"><ion-icon id="see-new-album" name="options"></ion-icon></a>
+  </ion-col>
+</ion-row>

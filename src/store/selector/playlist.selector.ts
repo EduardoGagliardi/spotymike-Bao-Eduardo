@@ -17,11 +17,9 @@ export const selectMyPlaylist = createSelector(
     selectPlaylists,
     selectUsers,
     (state: PlaylistState, users: UserState) => {
-        const currentUser = users.currentUser as IUser;
-        console.log(currentUser)
+        const currentUser = users.currentUser as IUser
         return state.playlists.filter((playlist: IPlaylist) => {
-            console.log(currentUser?.playlist)
-            return currentUser?.playlist?.filter(elm => elm.id === playlist._id).length > 0
+            return users.currentUser.playlist.filter(elm => elm.id === playlist.id).length > 0
         });
     }
 )

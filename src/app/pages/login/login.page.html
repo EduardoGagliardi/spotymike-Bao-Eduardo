@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <ion-list class="bg-transparent">
     <ion-item>
-      <ion-input type="email" formControlName="email" name="email" label="Email" labelPlacement="floating"
+      <ion-input type="email" formControlName="email" name="email" label="Email*" labelPlacement="floating"
         placeholder="mike@mike.mike"></ion-input>
     </ion-item>
     @if(form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)){
@@ -15,7 +15,7 @@
     </div>
     }
     <ion-item>
-      <ion-input type="password" formControlName="password" name="password" label="Password" labelPlacement="floating"
+      <ion-input type="password" formControlName="password" name="password" label="Password*" labelPlacement="floating"
         placeholder="••••••••••••••"></ion-input>
     </ion-item>
    
@@ -34,7 +34,7 @@
     }
   </ion-list>
   <br>
-  <a (click)="onPasswordLostModal()" style="float: left; padding-left: 5%;">Mot de passe oublie</a>
+  <a (click)="onPasswordLostModal()" class="lostPw" >Mot de passe oublie</a>
   <br>
   @if(error){
   <p class="error"><ion-icon name="alert-outline"></ion-icon>{{ error }}</p>

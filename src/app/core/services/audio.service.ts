@@ -19,8 +19,8 @@ export class AudioService {
     this.isPlay$ = new BehaviorSubject<boolean>(false);
   }
   load(id: string = ''){
-    this.audio = new Audio(`url/${id}`);
-    this.audio.load();
+    // this.audio = new Audio(`url/${id}`);
+    // this.audio.load();
   }
   play(){
     this.audio.play();

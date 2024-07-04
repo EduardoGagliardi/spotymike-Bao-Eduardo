@@ -62,7 +62,7 @@ export class RegisterPage implements OnInit {
     avatar: [''], 
     firstName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(60)]],
     lastName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(60)]],
-    email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$'),]],
+    email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'),]],
     birthdate: ['', Validators.required],
     sex: [''],
     phone: ['', [ Validators.min(1000000000), Validators.max(9999999999)]],
@@ -117,11 +117,11 @@ export class RegisterPage implements OnInit {
           firstname: this.form.value.firstName,
           lastname: this.form.value.lastName,
           dateBirth: this.form.value.birthdate,
-          sexe: this.form.value.sex,
-          tel: this.form.value.phone,
+          sexe: this.form.value.sex === 'male' ? 1 : 0,
+          tel: this.form.value.phone.toString(),
           password: this.form.value.password,
           active: 1,
-          followers: 0,
+          follower: 0,
           lastPlayed : [],
           songs: [],
           albums: [],
@@ -131,7 +131,7 @@ export class RegisterPage implements OnInit {
           updatedAt: dateNow,
         };
         const userCheck: IUser  = await this.fireBaseService.getAUser(user.email) as IUser;
-        console.log(userCheck);
+       //console.log(userCheck);
         if (userCheck) {
           const alert = await this.alertController.create({
             header: 'Registration Error',

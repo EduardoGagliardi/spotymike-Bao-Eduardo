@@ -1,8 +1,8 @@
-<ion-row class="song-item" (click)="onClickGetSongPlayer(song.id)">
-  <ion-col size="auto" class="song-number">
+<ion-row class="song-item">
+  <ion-col size="auto" class="song-number" (click)="onClickGetSongPlayer(song.id)">
     <img class="song-image" [src]="song.cover" alt="Song Image">
   </ion-col>
-  <ion-col class="song-details">
+  <ion-col class="song-details" (click)="onClickGetSongPlayer(song.id)">
     <div class="song-title">{{ song.title }}</div>
     <div class="song-artist">{{ song.artists[0].fullname }}</div>
   </ion-col>
@@ -10,6 +10,6 @@
     3:45
   </ion-col>
   <ion-col size="auto" class="song-options">
-    <a href=""><ion-icon id="see-new-album" name="options"></ion-icon></a>
+    <a href="javascript:void(0);" (click)="onOptionModal()"><ion-icon id="see-new-album" name="options"></ion-icon></a>
   </ion-col>
 </ion-row>

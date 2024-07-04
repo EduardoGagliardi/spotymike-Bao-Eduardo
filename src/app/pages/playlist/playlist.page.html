@@ -6,7 +6,7 @@
   </ion-toolbar>
 
   <ion-content [fullscreen]="true">
-      <ion-text text-center class="center">
-        <h2>No playlist here</h2>
-      </ion-text>
+    <div *ngFor="let playlist of playlist$ | async">
+      <app-playlist-item [playlist]="playlist"></app-playlist-item>
+    </div>
   </ion-content>

@@ -1,5 +1,5 @@
 export interface IPlaylist {
-    _id: string;
+    id: string;
     title: string;
     followed: number;
     cover: string;
@@ -10,6 +10,6 @@ export interface IPlaylist {
 }
 
 interface Isong {
-    _id: string;
+    id: string;
     title: string;
 }

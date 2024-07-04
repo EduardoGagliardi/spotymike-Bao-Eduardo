@@ -21,4 +21,13 @@ form{
   .bg-transparent {
     background: transparent;
   }
+  .error {
+    color: red;
+    display: block;
+    text-align: left;
+  }
+  .lostPw{
+    float: left; 
+    padding-left: 5%;
+  }
 }

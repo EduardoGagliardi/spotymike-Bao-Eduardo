@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { SongCardComponent } from '../song-card/song-card.component';
 import { ISong } from 'src/app/core/interfaces/song';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/store/app.state';
 import { Observable } from 'rxjs';
 import { selectTopSongStore } from 'src/store/selector/song.selector';
 import { loadSong } from 'src/store/action/song.action';
+import { SongCardComponent } from '../song-card/song-card.component';
 
 @Component({
   selector: 'app-top-song',

@@ -37,7 +37,8 @@ progress = 0;
         this.progress = Math.floor((currentTime / duration) * 100);
       }
     });
-  
+    this.playing = true
+    this.audio.play();
   }
 
   play(){

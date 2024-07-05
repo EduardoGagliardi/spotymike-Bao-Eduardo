@@ -7,10 +7,10 @@
     @if(form.get('firstName')?.invalid && (form.get('firstName')?.dirty || form.get('firstName')?.touched)){
       <div>
         @if(form.get('firstName')?.errors?.['required'] ){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>FirstName require</p>
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>First name require</p>
         }
         @else if(form.get('firstName')?.errors?.['minlength'] || form.get('firstName')?.errors?.['maxlength'] ){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>FirstName invalid</p>
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>First name invalid</p>
         }
       </div>
       }
@@ -21,10 +21,10 @@
     @if(form.get('lastName')?.invalid && (form.get('lastName')?.dirty || form.get('lastName')?.touched)){
       <div>
         @if(form.get('lastName')?.errors?.['required'] ){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>LastName require</p>
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>Last name require</p>
         }
         @else if(form.get('lastName')?.errors?.['minlength'] || form.get('lastName')?.errors?.['maxlength'] ){
-        <p class="error"><ion-icon name="alert-outline"></ion-icon>LastName invalid</p>
+        <p class="error"><ion-icon name="alert-outline"></ion-icon>Last name invalid</p>
         }
       </div>
       }

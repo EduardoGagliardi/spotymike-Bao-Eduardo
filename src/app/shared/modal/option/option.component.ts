@@ -26,4 +26,7 @@ private modalCtl = inject(ModalController);
   async cancel() {
     await this.modalCtl.dismiss();
   }
+  addToFavoris(){
+    
+  }
 }
